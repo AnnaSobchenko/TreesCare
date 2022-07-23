@@ -19,20 +19,28 @@ const AppBar = () => {
     <>
       <header className={s.header}>
         <div className={s.logo}>
-          <NavLink to="/">
+          <NavLink to="/trees">
             <img src={Logo} alt="logo" />           
           </NavLink>
         </div>
         <div className={s.header_navLink}>
 
-          {isLoggedIn && (
+        <NavLink
+            to="/trees"
+            className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
+          >
+            Trees
+          </NavLink>
+        
+
+          {/* {isLoggedIn && (
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
             >
-              Phonebook
+              TreesList
             </NavLink>
-          )}
+          )} */}
           {!isLoggedIn && (
             <NavLink
               to="/login"
@@ -49,14 +57,8 @@ const AppBar = () => {
               Register
             </NavLink>
           )}
-         
-          <NavLink
-            to="/contacts"
-            className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
-          >
-            Users
-          </NavLink>
-        </div>
+         </div>
+    
         <>
           {isLoggedIn && (
             <div className={s.flex}>

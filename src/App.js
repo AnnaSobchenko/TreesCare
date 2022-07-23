@@ -26,13 +26,12 @@ function App() {
       <div>
         <Suspense fallback={<Loader />}>
           <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/trees" element={<AppBar />}>
+            <Route path="/" element={<AppBar />}>
               <Route
                 index
                 element={isLoggedIn ? <MainPage /> : <Navigate to="login" />}
               />
-              <Route path="contacts" element={<TreesPage />} />
+              <Route path="trees" element={<TreesPage />} />
               <Route element={<PublicRoute />}>
                 <Route path="login" element={<LoginPage />} />
                 <Route path="register" element={<RegisterPage />} />
