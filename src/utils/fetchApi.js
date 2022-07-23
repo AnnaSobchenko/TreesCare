@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "https://it-revolution22-rest-api.herokuapp.com/";
+axios.defaults.baseURL = "https://tree-care-rest-api.herokuapp.com/";
 
 const token = {
   set(token) {
