@@ -102,7 +102,7 @@
 .firs_letter {
   font-weight: 700;
   line-height: 1.33;
-  color: var(--secondary-text-color);
+  // color: var(--secondary-text-color);
   margin-left: 0;
 }
 
@@ -112,8 +112,8 @@
     width: 45px;
     display: inline-block;
     white-space: nowrap;
-    animation: text 6s infinite linear;
-    padding-left: 90%;
+    // animation: text 6s infinite linear;
+    // padding-left: 90%;
     text-overflow: ellipsis;
     margin-left: 10px;
   }
@@ -156,14 +156,14 @@
 }
 
 .text_transform {
-  width: 100px;
-  text-align: center;
+  width: 90px;
+  // text-align: center;
   overflow: hidden;
   @media screen and (min-width: 768px) {
-    margin-left: 8px;
+    // margin-left: 8px;
   }
   @media screen and (min-width: 1280px) {
-    margin-left: 20px;
+    // margin-left: 20px;
   }
 }
 

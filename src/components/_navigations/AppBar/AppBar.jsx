@@ -43,14 +43,23 @@ const AppBar = () => {
             Trees
           </NavLink>
 
-          {/* {isLoggedIn && (
+          {isLoggedIn && (
             <NavLink
-              to="/"
+              to="/admin"
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
             >
-              TreesList
+              Admin
             </NavLink>
-          )} */}
+          )}
+          {isLoggedIn && (
+            <NavLink
+              to="/users"
+              className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
+            >
+              Users
+            </NavLink>
+          )}
+
           {!isLoggedIn && (
             <NavLink
               to="/login"
@@ -71,11 +80,23 @@ const AppBar = () => {
 
         <>
           {isLoggedIn && (
-            <div className={s.flex}>
+            <div className={s.flex} style={{
+              backgroundColor:
+                theme === "light"
+                ? "var(--primary-bg-color)"
+                : "var(--second-bg-color)",
+              color: theme === "light" ? "black" : "white",
+            }}>
               <div className={s.name_wrapper}>
-                <div className={s.letter_wrapper}>
+                <div className={s.letter_wrapper} style={{
+          backgroundColor:
+            theme === "light"
+            ? "#b3d4af"
+            : "#7c817b",
+          color: theme === "light" ? "black" : "white",
+        }} >
                   {userInfo.slice(0, 1) && (
-                    <span className={s.firs_letter}>
+                    <span className={s.firs_letter} >
                       {userInfo.slice(0, 1)}
                     </span>
                   )}
@@ -91,6 +112,7 @@ const AppBar = () => {
               </div>
             </div>
           )}
+          <SwitchTheme />
 
           <MediaQuery minWidth={768}>
             {isLoggedIn && (
@@ -100,8 +122,28 @@ const AppBar = () => {
                   dispatch(logout());
                 }}
               >
-                <div className={s.navIconMenu_wrapper}>
-                  <svg className={s.navIcon_signOut} width="16px" height="16px">
+                <div
+                  className={s.navIconMenu_wrapper}
+                  style={{
+                    backgroundColor:
+                      theme === "light"
+                        ? "var(--primary-bg-color)"
+                        : "var(--second-bg-color)",
+                    fill: theme === "light" ? "black" : "white",
+                  }}
+                >
+                  <svg
+                    className={s.navIcon_signOut}
+                    style={{
+                      backgroundColor:
+                        theme === "light"
+                          ? "var(--primary-bg-color)"
+                          : "var(--second-bg-color)",
+                      fill: theme === "light" ? "black" : "white",
+                    }}
+                    width="16px"
+                    height="16px"
+                  >
                     <use xlinkHref={`${Icons}#icon-sign-out`} />
                   </svg>
                 </div>
@@ -109,7 +151,6 @@ const AppBar = () => {
             )}
           </MediaQuery>
         </>
-        <SwitchTheme />
         {/* <SwitchLang /> */}
       </header>
       <Outlet className="container" />
