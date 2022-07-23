@@ -18,6 +18,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import TreesPage from "./pages/TreesPage/TreesPage";
+import Footer from "./components/_navigations/Footer/Footer";
 
 function App() {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -43,6 +44,7 @@ function App() {
           </Routes>
         </Suspense>
       </div>
+      <Footer />
     </div>
   );
 }
