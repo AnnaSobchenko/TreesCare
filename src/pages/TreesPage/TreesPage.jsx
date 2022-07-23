@@ -6,6 +6,7 @@ import { getIsLoggedIn } from "../../redux/auth/authSelector";
 import { getAllUsers } from "../../redux/user/userOperations";
 import { getUsers } from "../../redux/user/userSelector";
 import s from "./TreesPage.module.scss";
+import TreesList from "../../components/TreesList/TreesList";
 
 const TreesPage = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -42,7 +43,8 @@ const TreesPage = () => {
 
   return (
     <section className={`container ${s.main}`}>
-      <ul className={s.list}>
+      <TreesList />
+      {/* <ul className={s.list}>
         {users.map((user) => (
           <li
             key={user._id}
@@ -53,7 +55,7 @@ const TreesPage = () => {
             {isLoggedIn && <p className={s.text__email}>{user.email}</p>}
           </li>
         ))}
-      </ul>
+      </ul> */}
       {modal.open && (
         <Modal handleClose={closeModal} checker={true}>
           <CardTree contact={modal.content} closeModal={closeModal} />

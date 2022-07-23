@@ -17,11 +17,11 @@ export const treeCardValidationSchema = Yup.object().shape({
     .required("Fill the gap")
     .conditionOfTheTree("Please enter conditionOfTheTree")
     .max(250, "Max 250"),
-  registrationNumber: Yup.string()
-    .required("Fill the gap")
-    .conditionOfTheTree("Please enter registrationNumber")
-    .min(1, "Enter more than 1 characters")
-    .max(150, "Max 150"),
+  // registrationNumber: Yup.string()
+  //   .required("Fill the gap")
+  //   .conditionOfTheTree("Please enter registrationNumber")
+  //   .min(1, "Enter more than 1 characters")
+  //   .max(150, "Max 150"),
   descriptionOfNecessaryWorks: Yup.string()
     .required("Fill the gap")
     .conditionOfTheTree("Please enter description of necessary works")
