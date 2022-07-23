@@ -1,4 +1,3 @@
-
 import { React } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import Icons from "../../../images/symbol-defs.svg";
@@ -7,31 +6,42 @@ import MediaQuery from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsLoggedIn, getUserName } from "../../../redux/auth/authSelector";
 import { logout } from "../../../redux/auth/authOperations";
+import SwitchTheme from "../../SwitchTheme/SwitchTheme";
+import { getTheme } from "../../../redux/theme/themeSelector";
+// import SwitchLang from "../SwitchLang/SwitchLang";
 
-const Logo=require("../../../images/logo.png")
+const Logo = require("../../../images/logo.png");
 
 const AppBar = () => {
   const userInfo = useSelector(getUserName);
   const isLoggedIn = useSelector(getIsLoggedIn);
   const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
 
   return (
     <>
-      <header className={s.header}>
+      <header
+        className={s.header}
+        style={{
+          backgroundColor:
+            theme === "light"
+              ? "var(--primary-bg-color)"
+              : "var(--second-bg-color)",
+          color: theme === "light" ? "black" : "white",
+        }}
+      >
         <div className={s.logo}>
           <NavLink to="/trees">
-            <img src={Logo} alt="logo" />           
+            <img src={Logo} alt="logo" />
           </NavLink>
         </div>
         <div className={s.header_navLink}>
-
-        <NavLink
+          <NavLink
             to="/trees"
             className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
           >
             Trees
           </NavLink>
-        
 
           {/* {isLoggedIn && (
             <NavLink
@@ -57,8 +67,8 @@ const AppBar = () => {
               Register
             </NavLink>
           )}
-         </div>
-    
+        </div>
+
         <>
           {isLoggedIn && (
             <div className={s.flex}>
@@ -99,6 +109,8 @@ const AppBar = () => {
             )}
           </MediaQuery>
         </>
+        <SwitchTheme />
+        {/* <SwitchLang /> */}
       </header>
       <Outlet className="container" />
     </>

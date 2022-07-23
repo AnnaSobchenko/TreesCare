@@ -1,9 +1,21 @@
 import AuthForm from "../../components/AuthForm/AuthForm";
 import s from "./RegisterPage.module.scss";
+import { useSelector } from "react-redux";
+import { getTheme } from "../../redux/theme/themeSelector";
 
 const RegisterPage = () => {
+  const theme = useSelector(getTheme);
   return (
-    <div className={`container ${s.authPage}`}>
+    <div
+      className={`container ${s.authPage}`}
+      style={{
+        backgroundColor:
+          theme === "light"
+            ? "var(--primary-bg-color)"
+            : "var(--second-bg-color)",
+        color: theme === "light" ? "black" : "white",
+      }}
+    >
       {/* <div className={s.authPageLeft}>
         <h1 className={s.authPageTitle}>IT Revolution</h1>
         <p className={s.authtext}>

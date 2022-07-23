@@ -1,16 +1,18 @@
 import { Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { signin, signup } from "../../redux/auth/authOperations";
 import { addIsAdmin } from "../../redux/auth/authSlice";
 import { authValidationSchema } from "../../utils/validation/AuthValid";
 import LabelForm from "../_shared/LabelForm/LabelForm";
+import { getTheme } from "../../redux/theme/themeSelector";
 import "react-toastify/dist/ReactToastify.css";
 import s from "./AuthForm.module.scss";
 
 const AuthForm = ({ isAuth }) => {
   const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
 
   return (
     <div>
@@ -53,7 +55,12 @@ const AuthForm = ({ isAuth }) => {
                 values={values}
               />
 
-              <div className={s.btn}>
+              <div
+                className={s.btn}
+                style={{
+                  color: theme === "light" ? "black" : "white",
+                }}
+              >
                 <NavLink
                   to="/"
                   onClick={() => {

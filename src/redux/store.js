@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import {
   persistStore,
@@ -13,6 +13,8 @@ import {
 import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/authSlice";
 import usersReducer from "./user/userSlice";
+import themeReducer from "./theme/themeSlice";
+import langReducer from "./lang/langSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -25,15 +27,25 @@ const usersPersistConfig = {
   storage,
   whitelist: ["users"],
 };
-
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 const usersPersistedReducer = persistReducer(usersPersistConfig, usersReducer);
 
+const rootPersistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["theme", "lang"],
+};
+
+const rootReducer = combineReducers({
+  auth: authPersistedReducer,
+  users: usersPersistedReducer,
+  theme: themeReducer,
+  lang: langReducer,
+});
+const rootPersistedReducer = persistReducer(rootPersistConfig, rootReducer);
+
 const store = configureStore({
-  reducer: {
-    auth: authPersistedReducer,
-    users: usersPersistedReducer,
-  },
+  reducer: rootPersistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
