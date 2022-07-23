@@ -26,7 +26,8 @@ function App() {
       <div>
         <Suspense fallback={<Loader />}>
           <Routes>
-            <Route path="/" element={<AppBar />}>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/trees" element={<AppBar />}>
               <Route
                 index
                 element={isLoggedIn ? <MainPage /> : <Navigate to="login" />}
