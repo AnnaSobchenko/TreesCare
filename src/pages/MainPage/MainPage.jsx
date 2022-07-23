@@ -19,7 +19,7 @@ const MainPage = () => {
           цікавиться.
         </p>
         <NavLink to="/trees" className={s.link}>
-          Trees
+          Розпочати
         </NavLink>
       </div>
       {/* <div className={s.contact_wrapper}>
