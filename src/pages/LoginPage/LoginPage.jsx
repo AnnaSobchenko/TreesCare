@@ -14,16 +14,13 @@ const LoginPage = () => {
         pauseOnFocusLoss
         draggable
       />
-      <div className={s.authPageLeft}>
-        <h1 className={s.authPageTitle}>IT Revolution</h1>
+      {/* <div className={s.authPageLeft}>
+        <h1 className={s.authPageTitle}>Trees Care</h1>
         <p className={s.authtext}>
-          [ The information technology revolution has served as a catalyst for
-          electronic connectivity, altered the production function, enhanced
-          productivity growth, facilitated the collection of data, spearheaded
-          the transmission of ideas and extended the reach of economic and
-          social interactions. ]
+          [ If you would like to be able to sort or modify trees data, please
+          register.]
         </p>
-      </div>
+      </div> */}
       <AuthForm isAuth={false} />
     </div>
   );

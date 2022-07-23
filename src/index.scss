@@ -1,15 +1,15 @@
 :root {
-  --primary-bg-color: #121212;
+  --primary-bg-color: #eef3dd;
   --second-bg-color: #3e3e3e;
-  --btn-bg-color: #cdeaed;
+  --btn-bg-color: #eef3dd;
   --modal-bg-color: #ffffff;
   --second-button-color: #02172a;
-  --accent-button-color: #f31406;
-  --accent-nav-color: #f31406;
-  --check-color: #f31406;
-  --shadow-color: rgba(243, 20, 6, .2);
-  --btn-second-color: rgba(243, 20, 6, .8);
-  --primary-text-color: #ffffff;
+  --accent-button-color: rgb(175, 241, 82);
+  --accent-nav-color: rgb(65, 40, 40);
+  --check-color: rgb(175, 241, 82);
+  --shadow-color: rgba(243, 20, 6, 0.2);
+  --btn-second-color: rgb(175, 241, 82);
+  --primary-text-color: rgb(18, 210, 8);
   --secondary-text-color: #555555;
   --third-text-color: #ffffff;
   --border-color: #e2e3e5;
@@ -18,6 +18,9 @@
   --admin-svg: #cccccc;
   --question-wrapper-color: rgba(2, 23, 42, 0.1);
   --test-main-pages-line-color: #00122f;
+  --gradient1: rgb(175, 241, 82);
+  --gradient2: rgb(18, 210, 8);
+  --gradient3: rgb(65, 40, 40);
 }
 
 p,
@@ -91,7 +94,7 @@ a:visited,
 a:hover {
   text-decoration: none;
 }
-li{
+li {
   list-style: none;
 }
 
