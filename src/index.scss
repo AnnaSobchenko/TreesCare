@@ -1,0 +1,115 @@
+:root {
+  --primary-bg-color: #121212;
+  --second-bg-color: #3e3e3e;
+  --btn-bg-color: #cdeaed;
+  --modal-bg-color: #ffffff;
+  --second-button-color: #02172a;
+  --accent-button-color: #f31406;
+  --accent-nav-color: #f31406;
+  --check-color: #f31406;
+  --shadow-color: rgba(243, 20, 6, .2);
+  --btn-second-color: rgba(243, 20, 6, .8);
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #555555;
+  --third-text-color: #ffffff;
+  --border-color: #e2e3e5;
+  --border-check-color: #000000;
+  --contacts-vector: #00122f;
+  --admin-svg: #cccccc;
+  --question-wrapper-color: rgba(2, 23, 42, 0.1);
+  --test-main-pages-line-color: #00122f;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  background-color: var(--primary-bg-color);
+  font-weight: 400;
+  line-height: 1.57;
+  letter-spacing: 0.02em;
+  color: var(--primary-text-color);
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+li{
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}

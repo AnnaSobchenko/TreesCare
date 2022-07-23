@@ -1,0 +1,80 @@
+.authForm {
+  display: block;
+  margin: 0 auto;
+  padding: 40px 20px;
+  margin-bottom: 34px;
+  margin-top: 24px;
+  width: 280px;
+  font-size: 10px;
+  border-radius: 8px;
+  background: linear-gradient(
+    0deg,
+    rgba(4, 115, 116, 1) 0%,
+    rgba(85, 136, 143, 1) 46%,
+    rgba(4, 115, 116, 1) 100%
+  );
+  box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
+  box-sizing: border-box;
+
+  @media screen and (min-width: 768px) {
+    padding: 60px 32px 48px 32px;
+    margin-bottom: 48px;
+    width: 501px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 100px;
+    margin-top: 100px;
+    margin-right: 123px;
+  }
+  input {
+    background: #e8f0fe;
+    width: 95%;
+    border-radius: 8px;
+  }
+  .authFormTitle2 {
+    font-size: 2rem;
+  }
+  .btn {
+    width: 70px;
+    border-radius: 8px;
+    border: none;
+    height: 24px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--contacts-vector);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: var(--btn-bg-color);
+    &:hover {
+      color: var(--check-color);
+    }
+  }
+}
+
+.authFormTitle {
+  font-family: "Montserrat";
+  margin-bottom: 32px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--primary-text-color);
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.authFormTitle2 {
+  font-family: "Montserrat";
+  margin-bottom: 32px;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+}
