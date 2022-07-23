@@ -1,11 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import {
-  addUserContact,
-  getAllUsers,
-  getContact,
-  delUserById,
-} from "./userOperations";
+import { getAllUsers, delUserById } from "./userOperations";
 
 const usersSlice = createSlice({
   name: "users",
@@ -19,15 +14,15 @@ const usersSlice = createSlice({
   },
 
   reducers: {
-    onContactUpdate(state, { payload }) {
-      state.phoneForm = { ...payload };
-    },
-    onPhoneFormReset(state, { payload }) {
-      state.phoneForm = { ...payload };
-    },
-    onFilterValueChange(state, { payload }) {
-      state.filterValue = [...payload];
-    },
+    // onContactUpdate(state, { payload }) {
+    //   state.phoneForm = { ...payload };
+    // },
+    // onPhoneFormReset(state, { payload }) {
+    //   state.phoneForm = { ...payload };
+    // },
+    // onFilterValueChange(state, { payload }) {
+    //   state.filterValue = [...payload];
+    // },
   },
 
   extraReducers: {
@@ -48,28 +43,6 @@ const usersSlice = createSlice({
     [delUserById.fulfilled](state, { payload }) {},
     [delUserById.rejected](state, { payload }) {
       state.error = payload;
-    },
-    [addUserContact.pending](state) {
-      state.isLoading = true;
-    },
-    [addUserContact.fulfilled](state, { payload }) {
-      state.isLoading = false;
-      state.userContact = [...payload];
-      state.filterValue = [...payload];
-    },
-    [addUserContact.rejected](state, { payload }) {
-      state.isLoading = false;
-    },
-    [getContact.pending](state) {
-      state.isLoading = true;
-    },
-    [getContact.fulfilled](state, { payload }) {
-      state.isLoading = false;
-      state.userContact = [...payload];
-      state.filterValue = [...payload];
-    },
-    [getContact.rejected](state, { payload }) {
-      state.isLoading = false;
     },
   },
 });
