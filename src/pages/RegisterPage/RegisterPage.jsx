@@ -4,7 +4,7 @@ import s from "./RegisterPage.module.scss";
 const RegisterPage = () => {
   return (
     <div className={`container ${s.authPage}`}>
-      <div className={s.authPageLeft}>
+      {/* <div className={s.authPageLeft}>
         <h1 className={s.authPageTitle}>IT Revolution</h1>
         <p className={s.authtext}>
           [ The information technology revolution has served as a catalyst for
@@ -13,7 +13,7 @@ const RegisterPage = () => {
           the transmission of ideas and extended the reach of economic and
           social interactions. ]
         </p>
-      </div>
+      </div> */}
       <AuthForm isAuth={true} />
     </div>
   );

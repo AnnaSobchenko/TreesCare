@@ -65,7 +65,7 @@ const AuthForm = ({ isAuth }) => {
                   }}
                 >
                   submit
-                </NavLink>               
+                </NavLink>
               </div>
             </form>
           </div>
