@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardTree from "../../components/CardTree/CardTree";
 import Modal from "../../components/Modal/Modal";
+import TreeForm from "../../components/TreeForm/TreeForm";
 import { getIsLoggedIn } from "../../redux/auth/authSelector";
 import { getAllUsers } from "../../redux/user/userOperations";
 import { getUsers } from "../../redux/user/userSelector";
@@ -42,7 +43,8 @@ const TreesPage = () => {
 
   return (
     <section className={`container ${s.main}`}>
-      <ul className={s.list}>
+      <TreeForm />
+      {/* <ul className={s.list}>
         {users.map((user) => (
           <li
             key={user._id}
@@ -58,7 +60,7 @@ const TreesPage = () => {
         <Modal handleClose={closeModal} checker={true}>
           <CardTree contact={modal.content} closeModal={closeModal} />
         </Modal>
-      )}
+      )} */}
     </section>
   );
 };

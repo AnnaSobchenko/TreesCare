@@ -2,32 +2,40 @@ import { getFilterValue } from "../../redux/user/userSelector";
 import s from "./TreesList.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserEmail } from "../../redux/auth/authSelector";
-import { delUserContact, getContact } from "../../redux/user/userOperations";
 import { useEffect } from "react";
+import { getTrees } from "../../redux/trees/treesSelector";
 
 const TreesList = () => {
   const userFilterValue = useSelector(getFilterValue);
   const userEmail = useSelector(getUserEmail);
 
   const dispatch = useDispatch();
+  const treesArray = useSelector(getTrees);
 
   useEffect(() => {
-    dispatch(getContact({ email: userEmail }));
+    dispatch(getTrees());
   }, []);
 
-  const delContact = async (id) => {
-    console.log("id", id);
-    await dispatch(delUserContact({ contactId: id, email: userEmail }));
-    dispatch(getContact({ email: userEmail }));
-  };
+  // const delContact = async (id) => {
+  //   console.log("id", id);
+  //   await dispatch(delUserContact({ contactId: id, email: userEmail }));
+  //   dispatch(getContact({ email: userEmail }));
+  // };
 
   return (
     <div>
-      <ul className={s.items}>
-        {userFilterValue.map(({ id, name, number }) => (
-          <li key={id} className={s.item}>
-            <p className={s.text} >{name}</p>
-            <p className={s.text}>{number}</p>
+      TreesList
+      {/* <ul className={s.items}>
+        {treesArray.map(({ id, treeType, radius, treeOld, checked }) => (
+          <li key={id}>
+            <p>{treeType}</p>
+            <p>{radius}</p>
+            <p>{treeOld}</p>
+            <ul>
+              {checked.map((item) => (
+                <li key={item + 1}>{item}</li>
+              ))}
+            </ul>
             <button
               type="submit"
               className={s.btn}
@@ -37,7 +45,7 @@ const TreesList = () => {
             </button>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };

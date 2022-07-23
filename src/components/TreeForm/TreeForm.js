@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Field, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserEmail } from "../../redux/auth/authSelector";
 import {
@@ -14,103 +15,155 @@ import s from "./TreeForm.module.scss";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { getTheme } from "../../redux/theme/themeSelector";
+import FormikSelect from "../_shared/LabelForm/FormikSelect";
+import { addTree } from "../../redux/trees/treesOperations";
 
 export default function TreeForm() {
-  const phoneForm = useSelector(getUserPhoneForm);
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const userEmail = useSelector(getUserEmail);
-  const userContact = useSelector(getUserContacts);
-
   const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
 
-  const handleChange = (event) => {
-    const { name, value } = event.currentTarget;
-
-    switch (name) {
-      case "name":
-        setName(value);
-        break;
-      case "number":
-        setNumber(value);
-        break;
-      default:
-        return;
-    }
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (phoneForm.id) {
-      await dispatch(
-        updateUserContact({
-          name,
-          number,
-          email: userEmail,
-          id: phoneForm.id,
-        })
-      );
-    } else {
-      const isIncludes = userContact.some((el) => el.name === name);
-      if (isIncludes) {
-        setName("");
-        setNumber("");
-        return toast.error(
-          `Very sorry 😞 ${name}, already in the contact list`
-        );
-      }
-      dispatch(addUserContact({ name, number, email: userEmail }));
-
-      toast.success("New contact successfully added 🙂");
-    }
-
-    await dispatch(onPhoneFormReset({ name: "", number: "", id: "" }));
-    setName("");
-    setNumber("");
-  };
+  const treeTypes = [
+    {
+      options: [
+        { label: "Дуб", value: "дуб" },
+        { label: "Береза", value: "береза" },
+      ],
+    },
+  ];
+  const treeOlds = [
+    {
+      options: [
+        { label: "1-10 ", value: "1-10" },
+        { label: "11-20", value: "11-20" },
+        { label: "21-30", value: "21-30" },
+        { label: "31-40", value: "31-40" },
+        { label: "41-50", value: "41-50" },
+        { label: "51-100", value: "51-100" },
+      ],
+    },
+  ];
+  const radius = [
+    {
+      options: [
+        { label: "<1 ", value: "<1" },
+        { label: "1 ", value: "1" },
+        { label: "2", value: "2" },
+        { label: "3", value: "3" },
+        { label: "4", value: "4" },
+        { label: "5", value: "5" },
+      ],
+    },
+  ];
 
   return (
-    <form onSubmit={handleSubmit} className={s.form}>
-      <div className={s.label_wrapper}>
-        <label className={s.label}>
-          Name
-          <input
-            autoComplete="off"
-            type="text"
-            name="name"
-            className={s.input}
-            value={name}
-            onChange={handleChange}
-          />
-        </label>
-        <label className={s.label}>
-          Number
-          <input
-            autoComplete="off"
-            type="text"
-            name="number"
-            className={s.input}
-            value={number}
-            onChange={handleChange}
-          />
-        </label>
-      </div>
-      <button type="submit" className={s.btn}>
-        Add contact
-      </button>
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-      <ToastContainer />
-    </form>
+    <div>
+      <Formik
+        initialValues={{
+          radius: "others",
+          treeType: "other",
+          treeOld: "other",
+          checked: [],
+        }}
+        // validationSchema={treesSchema}
+        onSubmit={(values, { resetForm }) => {
+          console.log("values", values);
+          dispatch(addTree({ form: values, method: "add" }));
+          toast.success("tree adds to list");
+          resetForm();
+          // onHandleClose();
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+        }) => (
+          <div className={s.authForm}>
+            <h2 className={s.authFormTitle2}>"Register"</h2>
+            <form onSubmit={handleSubmit} className={s.authFormInput}>
+              <label>
+                Радіус
+                <Field
+                  name="radius"
+                  component={FormikSelect}
+                  value={values.radius}
+                  onChange={handleChange}
+                  options={radius}
+                />
+              </label>
+
+              <label>
+                Кількість років
+                <Field
+                  name="treeOld"
+                  component={FormikSelect}
+                  value={values.treeOld}
+                  onChange={handleChange}
+                  options={treeOlds}
+                />
+              </label>
+
+              <label>
+                Вид дерева
+                <Field
+                  name="treeType"
+                  component={FormikSelect}
+                  value={values.treeType}
+                  onChange={handleChange}
+                  options={treeTypes}
+                />
+              </label>
+
+              <div role="group" aria-labelledby="checkbox-group">
+                <div>
+                  <label>
+                    <Field type="checkbox" name="checked" value="resize" />
+                    Чи неохідно обрізати
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    <Field type="checkbox" name="checked" value="cut" />
+                    "Необхідно підстригти крону"
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    <Field type="checkbox" name="checked" value="colorize" />
+                    "Необхідно кольорувати"
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    <Field type="checkbox" name="checked" value="cut off" />
+                    "Необхідно зрізати"
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    <Field type="checkbox" name="checked" value="change" />
+                    "Необхідно замінити на нове"
+                  </label>
+                </div>
+              </div>
+
+              <button
+                className={s.btn}
+                style={{
+                  color: theme === "light" ? "black" : "white",
+                }}
+              >
+                submit
+              </button>
+            </form>
+          </div>
+        )}
+      </Formik>
+    </div>
   );
 }
