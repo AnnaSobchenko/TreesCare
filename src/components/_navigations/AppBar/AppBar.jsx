@@ -4,7 +4,11 @@ import Icons from "../../../images/symbol-defs.svg";
 import s from "./AppBar.module.scss";
 import MediaQuery from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
-import { getIsLoggedIn, getUserName } from "../../../redux/auth/authSelector";
+import {
+  getIsAdmin,
+  getIsLoggedIn,
+  getUserName,
+} from "../../../redux/auth/authSelector";
 import { logout } from "../../../redux/auth/authOperations";
 import SwitchTheme from "../../SwitchTheme/SwitchTheme";
 import { getTheme } from "../../../redux/theme/themeSelector";
@@ -17,6 +21,7 @@ const AppBar = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
+  const isAdmin = useSelector(getIsAdmin);
 
   return (
     <>
@@ -43,7 +48,7 @@ const AppBar = () => {
             Trees
           </NavLink>
 
-          {isLoggedIn && (
+          {isAdmin && (
             <NavLink
               to="/admin"
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
@@ -51,7 +56,7 @@ const AppBar = () => {
               Admin
             </NavLink>
           )}
-          {isLoggedIn && (
+          {isAdmin && (
             <NavLink
               to="/users"
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
@@ -80,23 +85,26 @@ const AppBar = () => {
 
         <>
           {isLoggedIn && (
-            <div className={s.flex} style={{
-              backgroundColor:
-                theme === "light"
-                ? "var(--primary-bg-color)"
-                : "var(--second-bg-color)",
-              color: theme === "light" ? "black" : "white",
-            }}>
+            <div
+              className={s.flex}
+              style={{
+                backgroundColor:
+                  theme === "light"
+                    ? "var(--primary-bg-color)"
+                    : "var(--second-bg-color)",
+                color: theme === "light" ? "black" : "white",
+              }}
+            >
               <div className={s.name_wrapper}>
-                <div className={s.letter_wrapper} style={{
-          backgroundColor:
-            theme === "light"
-            ? "#b3d4af"
-            : "#7c817b",
-          color: theme === "light" ? "black" : "white",
-        }} >
+                <div
+                  className={s.letter_wrapper}
+                  style={{
+                    backgroundColor: theme === "light" ? "#b3d4af" : "#7c817b",
+                    color: theme === "light" ? "black" : "white",
+                  }}
+                >
                   {userInfo.slice(0, 1) && (
-                    <span className={s.firs_letter} >
+                    <span className={s.firs_letter}>
                       {userInfo.slice(0, 1)}
                     </span>
                   )}
