@@ -1,16 +1,25 @@
-import Filter from "../../components/Filter/Filter";
-import TreeForm from "../../components/TreeForm/TreeForm";
-import TreesList from "../../components/TreesList/TreesList";
 import { NavLink } from "react-router-dom";
 import s from "./MainPage.module.scss";
+import { getTheme } from "../../redux/theme/themeSelector";
 
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Logo = require("../../images/logo.png");
 
 const MainPage = () => {
+  const theme = useSelector(getTheme);
   return (
-    <section className={`container ${s.main}`}>
+    <section
+      className={`container ${s.main}`}
+      style={{
+        backgroundColor:
+          theme === "light"
+            ? "var(--primary-bg-color)"
+            : "var(--second-bg-color)",
+        color: theme === "light" ? "black" : "white",
+      }}
+    >
       <div className={s.wrapper}>
         <img src={Logo} alt="logo" width={220} />
         <p className={s.mainText}>
@@ -19,7 +28,7 @@ const MainPage = () => {
         <p className={s.text}>
           На жаль, сьогодні це відбувається в паперовому вигляді і на це
           витрачаються гроші та ресурси без видимого результату — паспорти
-          знаходяться в паперових архівах, недоступні волентерам і тим, хто
+          знаходяться в паперових архівах, недоступні волонтерам і тим, хто
           цікавиться.
         </p>
         <NavLink to="/trees" className={s.link}>

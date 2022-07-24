@@ -7,13 +7,13 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Loader from "./components/_shared/Loader/Loader";
 import AppBar from "./components/_navigations/AppBar/AppBar";
 import PrivateRoute from "./components/_routs/PrivatRoute";
 import PublicRoute from "./components/_routs/PublicRoute";
-import { getIsAdmin, getIsLoggedIn } from "./redux/auth/authSelector";
+import { getIsAdmin } from "./redux/auth/authSelector";
 import MainPage from "./pages/MainPage/MainPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
@@ -25,7 +25,6 @@ import UsersPage from "./pages/UsersPage/UsersPage";
 
 function App() {
   const isAdmin = useSelector(getIsAdmin);
-  const isLoggedIn = useSelector(getIsLoggedIn);
   const theme = useSelector(getTheme);
 
   return (
@@ -53,9 +52,9 @@ function App() {
               <Route element={<PrivateRoute />}>
                 {isAdmin && <Route path="admin" element={<AdminPage />} />}
                 {isAdmin && <Route path="users" element={<UsersPage />} />}
-
                 <Route path="/" element={<MainPage />} />
               </Route>
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>
         </Suspense>

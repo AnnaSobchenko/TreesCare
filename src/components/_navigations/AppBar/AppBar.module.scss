@@ -7,7 +7,7 @@
   background-color: var(--primary-bg-color);
   padding-left: 20px;
   @media screen and (min-width: 768px) {
-    font-size: 14px;
+    font-size: 1.2rem;
     font-weight: 500;
     line-height: 1.33;
     padding-left: 32px;
@@ -47,6 +47,7 @@
 
   .link {
     color: var(--primary-text-color);
+    font-weight: 500;
 
     @media screen and (min-width: 768px) {
       margin-right: 60px;

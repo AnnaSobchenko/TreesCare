@@ -9,7 +9,7 @@ import {
 } from "../../utils/fetchApi";
 
 export const getAllAdmin = createAsyncThunk(
-  "trees/get",
+  "admin/get",
   async (_, thunkApi) => {
     try {
       const data = await getAllAdminApi();
@@ -21,7 +21,6 @@ export const getAllAdmin = createAsyncThunk(
 );
 
 export const addTree = createAsyncThunk("add/trees", async (data, thunkApi) => {
-  console.log("data", data);
   try {
     const { form, method } = data;
     if (method === "add") {

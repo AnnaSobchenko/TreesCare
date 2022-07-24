@@ -1,5 +1,6 @@
 import axios from "axios";
 axios.defaults.baseURL = "https://tree-care-rest-api.herokuapp.com/";
+// axios.defaults.baseURL = "http://localhost:3001/";
 
 const token = {
   set(token) {
@@ -87,6 +88,6 @@ export async function getOneTreeApi(registrationNumber) {
 }
 
 export async function getAllAdminApi() {
-  const { data } = await axios.get("/api/admin");
+  const { data } = await axios.get("/api/admin/");
   return data;
 }

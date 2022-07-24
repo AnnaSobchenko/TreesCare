@@ -1,38 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllAdmin } from "./adminOperations";
-// import { addTree } from "./treesOperations";
 
 const adminSlice = createSlice({
   name: "admin",
   initialState: {
     treesAdmin: [],
-    method:"",
     error: null,
     isLoading: false,
     message: "",
   },
 
   reducers: {
-    // onContactUpdate(state, { payload }) {
-    //   state.phoneForm = { ...payload };
-    // },
-    // onPhoneFormReset(state, { payload }) {
-    //   state.phoneForm = { ...payload };
-    // },
-    // onFilterValueChange(state, { payload }) {
-    //   state.filterValue = [...payload];
-    // },
+    
   },
 
   extraReducers: {
-    // getAllTrees
+    // getAllTreesForApprove
     [getAllAdmin.pending](state) {
       state.error = null;
     },
     [getAllAdmin.fulfilled](state, { payload }) {
-      console.log('payload', payload)
       state.treesAdmin = [...payload];
-      // state.method = [...payload.method];
     },
     [getAllAdmin.rejected](state, { payload }) {
       state.error = payload;

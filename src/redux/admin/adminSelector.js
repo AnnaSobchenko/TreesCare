@@ -1,3 +1,2 @@
-export const getTrees = (state) => state.admin.treesAdmin;
-export const getMethod = (state) => state.admin.method;
+export const getAdminTrees = (state) => state.admin.treesAdmin;
 export const getState = (state) => state.admin;

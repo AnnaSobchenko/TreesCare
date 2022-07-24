@@ -37,7 +37,7 @@ const treesPersistConfig = {
 const adminPersistConfig = {
   key: "admin",
   storage,
-  whitelist: ["treesAdmin", "method"],
+  whitelist: ["admin"],
 };
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 const usersPersistedReducer = persistReducer(usersPersistConfig, usersReducer);

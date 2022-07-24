@@ -1,5 +1,7 @@
 .authPage {
   background: var(--primary-bg-color);
+  padding-top: 40px;
+  box-sizing: border-box;
   @media screen and (min-width: 768px) {
   }
 
@@ -8,7 +10,7 @@
     justify-content: center;
     align-items: center;
   }
-}
+
 .authPageLeft {
   width: 280px;
   margin: auto;
@@ -66,4 +68,5 @@
   @media screen and (min-width: 1280px) {
     font-weight: 700;
   }
+}
 }

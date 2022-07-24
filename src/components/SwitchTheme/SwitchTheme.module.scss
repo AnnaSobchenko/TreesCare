@@ -1,17 +1,5 @@
 .switch_theme_div {
-  // position: absolute;
-  right: 165px;
-  top: 25px;
-  @media screen and (min-width: 480px) {
-    right: 75px;
-  }
-  @media screen and (min-width: 768px) {
-    right: 30px;
-  }
-  @media screen and (min-width: 1280px) {
-    right: 30px;
-  }
-}
+  margin-right: 30px;
 
  .btnD{
   color: black;
@@ -24,4 +12,4 @@
     font-size: 20px;
     background: transparent;
     border: none;
-  }
+  }}
