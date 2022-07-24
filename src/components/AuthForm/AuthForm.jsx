@@ -61,7 +61,7 @@ const AuthForm = ({ isAuth }) => {
               }}
             >
               <NavLink
-                to="/trees"
+                to="/login"
                 onClick={() => {
                   toast.success(
                     "A letter has been sent to your e-mail address, follow the link in the letter"

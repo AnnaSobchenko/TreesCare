@@ -12,7 +12,6 @@ const AdminPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("first");
     dispatch(getAllAdmin());
   }, []);
 
