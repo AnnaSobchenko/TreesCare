@@ -107,23 +107,6 @@ const TreesList = () => {
         {showBtn && <button>Add</button>}
       </Map>
     </section>
-    // <div>
-    //   <ul className={s.items}>
-    //     {userFilterValue.map(({ id, name, number }) => (
-    //       <li key={id} className={s.item}>
-    //         <p className={s.text} >{name}</p>
-    //         <p className={s.text}>{number}</p>
-    //         <button
-    //           type="submit"
-    //           className={s.btn}
-    //           onClick={() => delContact(id)}
-    //         >
-    //           delete
-    //         </button>
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </div>
   );
 };
 
