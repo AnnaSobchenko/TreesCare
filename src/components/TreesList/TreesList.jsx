@@ -1,10 +1,9 @@
 import s from "./TreesList.module.scss";
-import img from "../../images/favicon.png";
 import Modal from "../../components/Modal/Modal";
 import CardTree from "../../components/CardTree/CardTree";
 
 import React, { useEffect, useState } from "react";
-import { Map, Marker, Overlay } from "pigeon-maps";
+import { Map, Marker } from "pigeon-maps";
 
 import { getAllTrees } from "../../redux/trees/treesOperations";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,11 +13,9 @@ import { getIsLoggedIn } from "../../redux/auth/authSelector";
 
 const TreesList = () => {
   const [anchor, setAnchor] = useState([49.23435015414822, 28.458172138820828]);
-  const [payload, setPayload] = useState("ergrytuyjtrr");
-  // const [showInfo, setShowInfo] = useState(false);
+  const [payload] = useState("tree");
   const [showBtn, setShowBtn] = useState(false);
   const [addTree, setAddTree] = useState(false);
-  // const [modalInfo, setModalInfo] = useState(false);
   const [showTree, setShowTree] = useState(false);
   const dispatch = useDispatch();
   const allTrees = useSelector(getTrees);
@@ -26,13 +23,10 @@ const TreesList = () => {
 
   const mapClick = (e) => {
     setAnchor(e.latLng);
-    console.log("e.latLng :>> ", e.latLng);
     setShowBtn(false);
   };
 
   const test = ({ event, anchor, payload }) => {
-    console.log({ event, anchor, payload });
-
     setShowBtn(true);
   };
 
@@ -57,8 +51,6 @@ const TreesList = () => {
     });
   };
   const handleOpenModal = (data) => {
-    // const email = e.currentTarget.id;
-
     openModal(data);
   };
 
@@ -110,7 +102,6 @@ const TreesList = () => {
             <Marker
               width={radius}
               anchor={[location.lat, location.lng]}
-              // value={}
               color="green"
               key={registrationNumber}
               onClick={() => showTreeModal(data)}
