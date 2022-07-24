@@ -6,7 +6,9 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=mukta&size=30&duration=4500&color=030A0E&lines=Trees-care)](https://git.io/typing-svg)
 
 
-Link: https://tree-care.netlify.app/
+Live page: https://tree-care.netlify.app/
+
+GitHub: https://github.com/AnnaSobchenko/trees-care
 
 
    API documentation for test task IT-Revolution22:   
