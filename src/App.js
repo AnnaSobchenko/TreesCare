@@ -19,11 +19,26 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import TreesPage from "./pages/TreesPage/TreesPage";
 import Footer from "./components/_navigations/Footer/Footer";
+import { getTheme } from "./redux/theme/themeSelector";
+import AdminPage from "./pages/AdminPage/AdminPage";
+import UsersPage from "./pages/UsersPage/UsersPage";
 
 function App() {
   const isLoggedIn = useSelector(getIsLoggedIn);
+  const theme = useSelector(getTheme);
+
   return (
-    <div className="content">
+    <div
+      className="content"
+      style={{
+        backgroundColor:
+          theme === "light"
+            ? "var(--primary-bg-color)"
+            : "var(--second-bg-color)",
+        color: theme === "light" ? "black" : "white",
+        minHeight: "100vh",
+      }}
+    >
       <div>
         <Suspense fallback={<Loader />}>
           <Routes>
@@ -35,6 +50,8 @@ function App() {
                 <Route path="register" element={<RegisterPage />} />
               </Route>
               <Route element={<PrivateRoute />}>
+                <Route path="admin" element={<AdminPage />} />
+                <Route path="users" element={<UsersPage />} />
                 <Route path="/" element={<MainPage />} />
               </Route>
             </Route>

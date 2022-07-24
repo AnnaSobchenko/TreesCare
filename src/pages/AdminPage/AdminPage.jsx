@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardTree from "../../components/CardTree/CardTree";
 import Modal from "../../components/Modal/Modal";
-import TreeForm from "../../components/TreeForm/TreeForm";
 import { getIsLoggedIn } from "../../redux/auth/authSelector";
 import { getAllUsers } from "../../redux/user/userOperations";
 import { getUsers } from "../../redux/user/userSelector";
-import s from "./TreesPage.module.scss";
-import TreesList from "../../components/TreesList/TreesList";
+import s from "./AdminPage.module.scss";
 
-const TreesPage = () => {
+const AdminPage = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const dispatch = useDispatch();
 
@@ -43,9 +41,8 @@ const TreesPage = () => {
   };
 
   return (
-    <>
-      <TreesList />
-      {/* <ul className={s.list}>
+    <section className={`container ${s.main}`}>
+      <ul className={s.list}>
         {users.map((user) => (
           <li
             key={user._id}
@@ -56,14 +53,14 @@ const TreesPage = () => {
             {isLoggedIn && <p className={s.text__email}>{user.email}</p>}
           </li>
         ))}
-      </ul> */}
+      </ul>
       {modal.open && (
         <Modal handleClose={closeModal} checker={true}>
           <CardTree contact={modal.content} closeModal={closeModal} />
         </Modal>
       )}
-    </>
+    </section>
   );
 };
 
-export default TreesPage;
+export default AdminPage;

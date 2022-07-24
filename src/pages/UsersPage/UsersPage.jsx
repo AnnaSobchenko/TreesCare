@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CardTree from "../../components/CardTree/CardTree";
+import CardUser from "../../components/CardUser/CardUser";
 import Modal from "../../components/Modal/Modal";
-import TreeForm from "../../components/TreeForm/TreeForm";
-import { getIsLoggedIn } from "../../redux/auth/authSelector";
 import { getAllUsers } from "../../redux/user/userOperations";
 import { getUsers } from "../../redux/user/userSelector";
-import s from "./TreesPage.module.scss";
-import TreesList from "../../components/TreesList/TreesList";
+import s from "./UsersPage.module.scss";
 
-const TreesPage = () => {
-  const isLoggedIn = useSelector(getIsLoggedIn);
+const UsersPage = () => {
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,14 +35,15 @@ const TreesPage = () => {
   };
   const handleOpenModal = (e) => {
     const email = e.currentTarget.id;
-    const userInfo = users.find((el) => el.email === email);
+    const userInfo=users.find((el)=>el.email===email)
     openModal(userInfo);
   };
 
+  
+
   return (
-    <>
-      <TreesList />
-      {/* <ul className={s.list}>
+    <section className={`container ${s.main}`}>
+      <ul className={s.list}>
         {users.map((user) => (
           <li
             key={user._id}
@@ -53,17 +51,18 @@ const TreesPage = () => {
             onClick={(e) => handleOpenModal(e)}
           >
             <p className={s.text__name}>{user.name}</p>
-            {isLoggedIn && <p className={s.text__email}>{user.email}</p>}
+            <p className={s.text__email}>{user.email}</p>
+            
           </li>
         ))}
-      </ul> */}
+      </ul>
       {modal.open && (
         <Modal handleClose={closeModal} checker={true}>
-          <CardTree contact={modal.content} closeModal={closeModal} />
+          <CardUser contact={modal.content} closeModal={closeModal}/>
         </Modal>
       )}
-    </>
+    </section>
   );
 };
 
-export default TreesPage;
+export default UsersPage;

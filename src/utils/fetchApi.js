@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "https://it-revolution22-rest-api.herokuapp.com/";
+axios.defaults.baseURL = "https://tree-care-rest-api.herokuapp.com/";
 
 const token = {
   set(token) {
@@ -54,28 +54,31 @@ export async function getAllUsersApi() {
   const { data } = await axios.get("/api/users");
   return data;
 }
-export async function addContactApi(form) {
-  const { data } = await axios.post("/api/users/contacts/add", form);
 
-  return data.contacts;
-}
-export async function updateUserContactApi(form) {
-  const { data } = await axios.put(`/api/users/${form.id}`, form);
-
-  return data.contacts;
-}
-export async function getContactApi(form) {
-  const { data } = await axios.post("/api/users/contacts", form);
-
-  return data;
-}
-export async function delContactApi(form) {
-  const { data } = await axios.post("/api/users/contacts/contactId", form);
-
-  return data;
-}
 export async function delUserByIdApi(id) {
   console.log("{id}", id);
   await axios.delete(`/api/users/${id}`, id);
   return;
+}
+export async function getAllTreesApi() {
+  const { data } = await axios.get("/api/trees");
+  return data;
+}
+export async function addTreeApi(treeData) {
+  console.log("treeData", treeData);
+  const { message } = await axios.post("/api/trees/add", treeData);
+  return message;
+}
+export async function updateTreeApi(treeData) {
+  const { data } = await axios.putch("/api/trees/add", treeData);
+  return data;
+}
+export async function deleteTreeApi(treeData) {
+  await axios.delete("/api/trees/add", treeData);
+  return;
+}
+export async function getOneTreeApi(id) {
+  console.log("{id}", id);
+  const { data } = await axios.post(`/api/trees/${id}`, id);
+  return data;
 }

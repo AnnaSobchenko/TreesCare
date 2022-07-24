@@ -1,4 +1,3 @@
-
 import { React } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import Icons from "../../../images/symbol-defs.svg";
@@ -7,40 +6,60 @@ import MediaQuery from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsLoggedIn, getUserName } from "../../../redux/auth/authSelector";
 import { logout } from "../../../redux/auth/authOperations";
+import SwitchTheme from "../../SwitchTheme/SwitchTheme";
+import { getTheme } from "../../../redux/theme/themeSelector";
+// import SwitchLang from "../SwitchLang/SwitchLang";
 
-const Logo=require("../../../images/logo.png")
+const Logo = require("../../../images/logo.png");
 
 const AppBar = () => {
   const userInfo = useSelector(getUserName);
   const isLoggedIn = useSelector(getIsLoggedIn);
   const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
 
   return (
     <>
-      <header className={s.header}>
+      <header
+        className={s.header}
+        style={{
+          backgroundColor:
+            theme === "light"
+              ? "var(--primary-bg-color)"
+              : "var(--second-bg-color)",
+          color: theme === "light" ? "black" : "white",
+        }}
+      >
         <div className={s.logo}>
           <NavLink to="/trees">
-            <img src={Logo} alt="logo" />           
+            <img src={Logo} alt="logo" />
           </NavLink>
         </div>
         <div className={s.header_navLink}>
-
-        <NavLink
+          <NavLink
             to="/trees"
             className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
           >
             Trees
           </NavLink>
-        
 
-          {/* {isLoggedIn && (
+          {isLoggedIn && (
             <NavLink
-              to="/"
+              to="/admin"
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
             >
-              TreesList
+              Admin
             </NavLink>
-          )} */}
+          )}
+          {isLoggedIn && (
+            <NavLink
+              to="/users"
+              className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
+            >
+              Users
+            </NavLink>
+          )}
+
           {!isLoggedIn && (
             <NavLink
               to="/login"
@@ -57,15 +76,27 @@ const AppBar = () => {
               Register
             </NavLink>
           )}
-         </div>
-    
+        </div>
+
         <>
           {isLoggedIn && (
-            <div className={s.flex}>
+            <div className={s.flex} style={{
+              backgroundColor:
+                theme === "light"
+                ? "var(--primary-bg-color)"
+                : "var(--second-bg-color)",
+              color: theme === "light" ? "black" : "white",
+            }}>
               <div className={s.name_wrapper}>
-                <div className={s.letter_wrapper}>
+                <div className={s.letter_wrapper} style={{
+          backgroundColor:
+            theme === "light"
+            ? "#b3d4af"
+            : "#7c817b",
+          color: theme === "light" ? "black" : "white",
+        }} >
                   {userInfo.slice(0, 1) && (
-                    <span className={s.firs_letter}>
+                    <span className={s.firs_letter} >
                       {userInfo.slice(0, 1)}
                     </span>
                   )}
@@ -81,6 +112,7 @@ const AppBar = () => {
               </div>
             </div>
           )}
+          <SwitchTheme />
 
           <MediaQuery minWidth={768}>
             {isLoggedIn && (
@@ -90,8 +122,28 @@ const AppBar = () => {
                   dispatch(logout());
                 }}
               >
-                <div className={s.navIconMenu_wrapper}>
-                  <svg className={s.navIcon_signOut} width="16px" height="16px">
+                <div
+                  className={s.navIconMenu_wrapper}
+                  style={{
+                    backgroundColor:
+                      theme === "light"
+                        ? "var(--primary-bg-color)"
+                        : "var(--second-bg-color)",
+                    fill: theme === "light" ? "black" : "white",
+                  }}
+                >
+                  <svg
+                    className={s.navIcon_signOut}
+                    style={{
+                      backgroundColor:
+                        theme === "light"
+                          ? "var(--primary-bg-color)"
+                          : "var(--second-bg-color)",
+                      fill: theme === "light" ? "black" : "white",
+                    }}
+                    width="16px"
+                    height="16px"
+                  >
                     <use xlinkHref={`${Icons}#icon-sign-out`} />
                   </svg>
                 </div>
@@ -99,6 +151,7 @@ const AppBar = () => {
             )}
           </MediaQuery>
         </>
+        {/* <SwitchLang /> */}
       </header>
       <Outlet className="container" />
     </>
