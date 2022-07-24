@@ -13,7 +13,7 @@ import { TreeValidationSchema } from "../../utils/validation/TreeValid";
 import LabelForm from "../_shared/LabelForm/LabelForm";
 import FormikInput from "../_shared/LabelForm/FormikInput";
 
-export default function TreeForm() {
+export default function TreeForm({ content, closeModal }) {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
 
@@ -78,7 +78,7 @@ export default function TreeForm() {
         // validationSchema={TreeValidationSchema}
         onSubmit={(values, { resetForm }) => {
           console.log("values", values);
-          dispatch(addTree({ form: values, method: "add" }));
+          dispatch(addTree({ form: { ...values, content }, method: "add" }));
           toast.success("tree adds to list");
           resetForm();
           // onHandleClose();
@@ -213,7 +213,15 @@ export default function TreeForm() {
                   </label>
                 </div>
               </div>
-
+              <label for="avatar" className={s.label}>
+                Добавити фото дерева:
+              </label>
+              <input
+                type="file"
+                id="avatar"
+                name="avatar"
+                accept="image/png, image/jpeg"
+              ></input>
               <button
                 type="submit"
                 className={s.btn}
@@ -221,7 +229,7 @@ export default function TreeForm() {
                   color: theme === "light" ? "black" : "white",
                 }}
               >
-                submit
+                Додати
               </button>
             </form>
           </div>

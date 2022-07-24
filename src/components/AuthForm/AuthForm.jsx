@@ -15,70 +15,68 @@ const AuthForm = ({ isAuth }) => {
   const theme = useSelector(getTheme);
 
   return (
-    <div>
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validationSchema={authValidationSchema}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <div className={s.authForm}>
-            <h2 className={s.authFormTitle2}>
-              {isAuth ? "Register:" : "Login:"}
-            </h2>
-            <form onSubmit={handleSubmit} className={s.authFormInput}>
-              {isAuth && (
-                <LabelForm
-                  type="name"
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                  values={values}
-                />
-              )}
+    <Formik
+      initialValues={{ email: "", password: "" }}
+      // validationSchema={authValidationSchema}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+      }) => (
+        <div className={s.authForm}>
+          <h2 className={s.authFormTitle2}>
+            {isAuth ? "Register:" : "Login:"}
+          </h2>
+          <form onSubmit={handleSubmit} className={s.authFormInput}>
+            {isAuth && (
               <LabelForm
-                type="email"
+                type="name"
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 values={values}
               />
-              <LabelForm
-                type="password"
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                values={values}
-              />
+            )}
+            <LabelForm
+              type="email"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              values={values}
+            />
+            <LabelForm
+              type="password"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              values={values}
+            />
 
-              <div
-                className={s.btn}
-                style={{
-                  color: theme === "light" ? "black" : "white",
+            <div
+              className={s.btn}
+              style={{
+                color: theme === "light" ? "black" : "white",
+              }}
+            >
+              <NavLink
+                to="/"
+                onClick={() => {
+                  toast.success(
+                    "A letter has been sent to your e-mail address, follow the link in the letter"
+                  );
+                  dispatch(!isAuth ? signin(values) : signup(values));
+                  values.email === "admin@mail.com" && dispatch(addIsAdmin());
                 }}
               >
-                <NavLink
-                  to="/"
-                  onClick={() => {
-                    toast.success(
-                      "A letter has been sent to your e-mail address, follow the link in the letter"
-                    );
-                    dispatch(!isAuth ? signin(values) : signup(values));
-                    values.email === "admin@mail.com" && dispatch(addIsAdmin());
-                  }}
-                >
-                  submit
-                </NavLink>
-              </div>
-            </form>
-          </div>
-        )}
-      </Formik>
-    </div>
+                submit
+              </NavLink>
+            </div>
+          </form>
+        </div>
+      )}
+    </Formik>
   );
 };
 
