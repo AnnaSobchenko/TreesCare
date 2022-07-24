@@ -2,6 +2,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getIsAdmin, getIsLoggedIn } from "../../redux/auth/authSelector";
 import { delUserById, getAllUsers } from "../../redux/user/userOperations";
 import s from "./CardTree.module.scss";
+const TreeImg = require("../../images/spruce.jpg");
+const tree = {
+  age: "13",
+  condition: "good",
+  image: "tree123.jpg",
+  kindOfTree: "spruce",
+  location: { lat: 20.99835602, lng: 27.01502627 },
+  necessaryWorks: "[{cut:false}]",
+  radius: "11",
+  registrationNumber: "566121218754",
+  __v: 0,
+  _id: "6",
+};
 
 const CardTree = ({ contact, closeModal }) => {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -16,18 +29,17 @@ const CardTree = ({ contact, closeModal }) => {
   };
   return (
     <div className={s.card}>
-      <div className={s.usercard}>
-        <p className={s.card__name}>{contact.name}</p>
-        {isLoggedIn && <p className={s.card__email}>{contact.email}</p>}
-        {isAdmin && (
-          <button
-            value={contact._id}
-            className={s.btn}
-            onClick={(e) => handleDelete(e)}
-          >
-            Delete "{contact.name}"
-          </button>
-        )}
+      <img className={s.img} src={TreeImg} alt="" />
+      <div>
+        <h2 className={s.title}>Kind of tree: "spruce"</h2>
+        <p className={s.text}>Radius: '11' m</p>
+        <p className={s.text}>Age: '40'</p>
+        <p className={s.text}>Condition: "good"</p>
+        <p className={s.text}>
+          Registration Number: "9ca7fa2c-627f-4d4c-9f06-5081d96d58bc"
+        </p>
+        <p className={s.text}>Location:</p>
+        <p className={s.text}> necessaryWorks</p>
       </div>
     </div>
   );
