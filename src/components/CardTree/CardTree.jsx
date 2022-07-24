@@ -17,15 +17,15 @@ const CardTree = ({ contact, closeModal }) => {
   return (
     <div className={s.card}>
       <div className={s.usercard}>
-        <p className={s.card__name}>{contact.name}</p>
-        {isLoggedIn && <p className={s.card__email}>{contact.email}</p>}
+        <p className={s.card__name}>{contact.age}</p>
+        {isLoggedIn && <p className={s.card__email}>{contact.kindOfTree}</p>}
         {isAdmin && (
           <button
             value={contact._id}
             className={s.btn}
             onClick={(e) => handleDelete(e)}
           >
-            Delete "{contact.name}"
+            Delete "{contact.kindOfTree}"
           </button>
         )}
       </div>

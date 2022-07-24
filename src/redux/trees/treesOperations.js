@@ -13,7 +13,6 @@ export const getAllTrees = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const data = await getAllTreesApi();
-
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
