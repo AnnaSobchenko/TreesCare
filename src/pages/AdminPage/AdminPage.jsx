@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardTree from "../../components/CardTree/CardTree";
 import Modal from "../../components/Modal/Modal";
+import { getAllAdmin } from "../../redux/admin/adminOperations";
+import { getState, getTrees } from "../../redux/admin/adminSelector";
 import { getIsLoggedIn } from "../../redux/auth/authSelector";
 import { getAllUsers } from "../../redux/user/userOperations";
 import { getUsers } from "../../redux/user/userSelector";
@@ -12,10 +14,10 @@ const AdminPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllUsers());
+    dispatch(getAllAdmin());
   }, []);
 
-  const users = useSelector(getUsers);
+  const trees = useSelector(getState);
   const [modal, setModal] = useState({
     open: false,
     content: null,
@@ -36,21 +38,22 @@ const AdminPage = () => {
   };
   const handleOpenModal = (e) => {
     const email = e.currentTarget.id;
-    const userInfo = users.find((el) => el.email === email);
+    const userInfo = trees.find((el) => el.email === email);
     openModal(userInfo);
   };
-
+const treesAdmin=useSelector(getTrees)
+console.log('treesAdmin', treesAdmin)
   return (
     <section className={`container ${s.main}`}>
       <ul className={s.list}>
-        {users.map((user) => (
+        {treesAdmin.map((tree) => (
           <li
-            key={user._id}
-            id={user.email}
+            key={tree._id}
+            id={tree.registrationNumber}
             onClick={(e) => handleOpenModal(e)}
           >
-            <p className={s.text__name}>{user.name}</p>
-            {isLoggedIn && <p className={s.text__email}>{user.email}</p>}
+            <p className={s.text__name}>{tree.trees.kindOfTree}</p>
+            {isLoggedIn && <p className={s.text__email}> age {tree.trees.age}</p>}
           </li>
         ))}
       </ul>

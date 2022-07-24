@@ -16,6 +16,7 @@ import usersReducer from "./user/userSlice";
 import themeReducer from "./theme/themeSlice";
 import langReducer from "./lang/langSlice";
 import treesReducer from "./trees/treesSlice";
+import adminReducer from "./admin/adminSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -33,9 +34,15 @@ const treesPersistConfig = {
   storage,
   whitelist: ["trees"],
 };
+const adminPersistConfig = {
+  key: "admin",
+  storage,
+  whitelist: ["treesAdmin", "method"],
+};
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 const usersPersistedReducer = persistReducer(usersPersistConfig, usersReducer);
 const treesPersistedReducer = persistReducer(treesPersistConfig, treesReducer);
+const adminPersistedReducer = persistReducer(adminPersistConfig, adminReducer);
 
 const rootPersistConfig = {
   key: "root",
@@ -47,6 +54,7 @@ const rootReducer = combineReducers({
   auth: authPersistedReducer,
   users: usersPersistedReducer,
   trees: treesPersistedReducer,
+  admin: adminPersistedReducer,
   theme: themeReducer,
   lang: langReducer,
 });
