@@ -28,7 +28,7 @@ const CardTree = ({ contact, closeModal }) => {
   } = contact;
   return (
     <div className={s.card}>
-      <img className={s.img} src={TreeImg} alt="" />
+      <img className={s.img} src={image} alt="image" />
       <div>
         <h2 className={s.title}>{kindOfTree}</h2>
         <p className={s.text}>Radius: {radius} m</p>
