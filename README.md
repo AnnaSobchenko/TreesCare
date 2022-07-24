@@ -13,6 +13,6 @@ GitHub: https://github.com/AnnaSobchenko/trees-care
 
    API documentation:   
    https://tree-care-rest-api.herokuapp.com/   
-   https://tree-care-rest-api.herokuapp.com/api-docs/
+   swagger: https://tree-care-rest-api.herokuapp.com/api-docs/
 
    
