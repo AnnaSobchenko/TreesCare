@@ -9,14 +9,16 @@ import { Map, Marker, Overlay } from "pigeon-maps";
 import { getAllTrees } from "../../redux/trees/treesOperations";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrees } from "../../redux/trees/treesSelector";
+import TreeForm from "../TreeForm/TreeForm";
 
 const TreesList = () => {
   const [anchor, setAnchor] = useState([49.23435015414822, 28.458172138820828]);
   const [payload, setPayload] = useState("ergrytuyjtrr");
   // const [showInfo, setShowInfo] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
+  const [addTree, setAddTree] = useState(false);
   // const [modalInfo, setModalInfo] = useState(false);
-
+  const [showTree, setShowTree] = useState(false);
   const dispatch = useDispatch();
   const allTrees = useSelector(getTrees);
 
@@ -45,6 +47,8 @@ const TreesList = () => {
   };
 
   const closeModal = () => {
+    setShowTree(false);
+    setAddTree(false);
     setModal({
       open: false,
       content: null,
@@ -52,7 +56,18 @@ const TreesList = () => {
   };
   const handleOpenModal = (data) => {
     // const email = e.currentTarget.id;
+
     openModal(data);
+  };
+
+  const showTreeModal = (data) => {
+    handleOpenModal(data);
+    setShowTree(true);
+  };
+
+  const addTreeModal = (data) => {
+    handleOpenModal(data);
+    setAddTree(true);
   };
 
   useEffect(() => {
@@ -94,18 +109,26 @@ const TreesList = () => {
               // value={}
               color="green"
               key={registrationNumber}
-              onClick={() => handleOpenModal(data)}
+              onClick={() => showTreeModal(data)}
             />
           );
         })}
-        {modal.open && (
+        {modal.open && showTree && (
           <Modal handleClose={closeModal} checker={true}>
             <CardTree contact={modal.content} closeModal={closeModal} />
           </Modal>
         )}
-
-        {showBtn && <button>Add</button>}
+        {modal.open && addTree && (
+          <Modal handleClose={closeModal} checker={true}>
+            <TreeForm contact={modal.content} closeModal={closeModal} />
+          </Modal>
+        )}
       </Map>
+      {showBtn && (
+        <button className={s.addBtn} onClick={(data) => addTreeModal(data)}>
+          Додати дерево
+        </button>
+      )}
     </section>
   );
 };
