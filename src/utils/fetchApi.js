@@ -66,19 +66,27 @@ export async function getAllTreesApi() {
 }
 export async function addTreeApi(treeData) {
   console.log("treeData", treeData);
-  const { message } = await axios.post("/api/trees/add", treeData);
+  const data={trees:{treeData}, method:"add"}
+  const { message } = await axios.post("/api/trees/add", data);
   return message;
 }
-export async function updateTreeApi(treeData) {
-  const { data } = await axios.putch("/api/trees/add", treeData);
-  return data;
+export async function updateTreeApi(treeData) {  
+  const data={trees:{treeData}, method:"update"}
+  const { message } = await axios.post("/api/trees/add", data);
+  return message;
 }
-export async function deleteTreeApi(treeData) {
-  await axios.delete("/api/trees/add", treeData);
+export async function deleteTreeApi(treeData) {  
+  const data={trees:{treeData}, method:"delete"}
+  await axios.delete("/api/trees/add", data);
   return;
 }
-export async function getOneTreeApi(id) {
-  console.log("{id}", id);
-  const { data } = await axios.post(`/api/trees/${id}`, id);
+export async function getOneTreeApi(registrationNumber) {
+  console.log("registrationNumber", registrationNumber);
+  const { data } = await axios.get(`/api/trees/${registrationNumber}`);
+  return data;
+}
+
+export async function getAllAdminApi() {
+  const { data } = await axios.get("/api/admin");
   return data;
 }
