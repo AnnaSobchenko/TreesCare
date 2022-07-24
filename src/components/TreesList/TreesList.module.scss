@@ -45,6 +45,34 @@
 //   }
 // }
 .treesSection {
+  position: relative;
   width: 100vw;
   height: 100vh;
+}
+.addBtn{
+
+    width: 150px;
+    border-radius: 32px;
+    border: none;
+    height: 32px;
+    padding: 0 12px;
+    padding-top: 9px !important;
+    padding-bottom: 10.5px !important;
+    margin-top: 30px;
+    text-align: center;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-family: Rubik;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 600;
+    background: #fff;
+    color: #3c4043;
+    cursor: pointer;
+    position: fixed;
+    top: 70px;
+    right: 30px;
+    z-index: 1000;
+
 }

@@ -15,6 +15,7 @@ const TreesList = () => {
   const [payload, setPayload] = useState("ergrytuyjtrr");
   // const [showInfo, setShowInfo] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
+  const [addTree, setAddTree] = useState(false);
   // const [modalInfo, setModalInfo] = useState(false);
 
   const dispatch = useDispatch();
@@ -52,7 +53,13 @@ const TreesList = () => {
   };
   const handleOpenModal = (data) => {
     // const email = e.currentTarget.id;
+
     openModal(data);
+  };
+
+  const addTreeModal = (data) => {
+    handleOpenModal();
+    setAddTree(true);
   };
 
   useEffect(() => {
@@ -98,14 +105,20 @@ const TreesList = () => {
             />
           );
         })}
-        {modal.open && (
+        {modal.open && !addTree && (
           <Modal handleClose={closeModal} checker={true}>
             <CardTree contact={modal.content} closeModal={closeModal} />
           </Modal>
         )}
-
-        {showBtn && <button>Add</button>}
+        {modal.open && addTree && (
+          <Modal handleClose={closeModal} checker={true}></Modal>
+        )}
       </Map>
+      {showBtn && (
+        <button className={s.addBtn} onClick={(data) => addTreeModal(data)}>
+          Добавити дерево
+        </button>
+      )}
     </section>
   );
 };
