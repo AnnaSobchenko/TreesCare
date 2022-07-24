@@ -42,7 +42,7 @@ const TreesPage = () => {
   };
 
   return (
-    <section className={`container ${s.main}`}>
+    <>
       <TreesList />
       {/* <ul className={s.list}>
         {users.map((user) => (
@@ -61,7 +61,7 @@ const TreesPage = () => {
           <CardTree contact={modal.content} closeModal={closeModal} />
         </Modal>
       )}
-    </section>
+    </>
   );
 };
 
