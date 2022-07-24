@@ -10,6 +10,7 @@ import { getAllTrees } from "../../redux/trees/treesOperations";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrees } from "../../redux/trees/treesSelector";
 import TreeForm from "../TreeForm/TreeForm";
+import { getIsLoggedIn } from "../../redux/auth/authSelector";
 
 const TreesList = () => {
   const [anchor, setAnchor] = useState([49.23435015414822, 28.458172138820828]);
@@ -21,6 +22,7 @@ const TreesList = () => {
   const [showTree, setShowTree] = useState(false);
   const dispatch = useDispatch();
   const allTrees = useSelector(getTrees);
+  const isLoggedIn = useSelector(getIsLoggedIn);
 
   const mapClick = (e) => {
     setAnchor(e.latLng);
@@ -81,15 +83,17 @@ const TreesList = () => {
         defaultZoom={11}
         onClick={mapClick}
       >
-        <Marker
-          width={30}
-          anchor={anchor}
-          color="red"
-          payload={payload}
-          onClick={({ event, anchor, payload }) =>
-            test({ event, anchor, payload })
-          }
-        />
+        {isLoggedIn && (
+          <Marker
+            width={30}
+            anchor={anchor}
+            color="red"
+            payload={payload}
+            onClick={({ event, anchor, payload }) =>
+              test({ event, anchor, payload })
+            }
+          />
+        )}
 
         {allTrees.map((data) => {
           const {
@@ -124,7 +128,7 @@ const TreesList = () => {
           </Modal>
         )}
       </Map>
-      {showBtn && (
+      {showBtn && isLoggedIn && (
         <button className={s.addBtn} onClick={(data) => addTreeModal(data)}>
           Додати дерево
         </button>

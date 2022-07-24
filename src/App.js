@@ -13,7 +13,7 @@ import Loader from "./components/_shared/Loader/Loader";
 import AppBar from "./components/_navigations/AppBar/AppBar";
 import PrivateRoute from "./components/_routs/PrivatRoute";
 import PublicRoute from "./components/_routs/PublicRoute";
-import { getIsLoggedIn } from "./redux/auth/authSelector";
+import { getIsAdmin, getIsLoggedIn } from "./redux/auth/authSelector";
 import MainPage from "./pages/MainPage/MainPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
@@ -24,6 +24,7 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import UsersPage from "./pages/UsersPage/UsersPage";
 
 function App() {
+  const isAdmin = useSelector(getIsAdmin);
   const isLoggedIn = useSelector(getIsLoggedIn);
   const theme = useSelector(getTheme);
 
@@ -50,8 +51,9 @@ function App() {
                 <Route path="register" element={<RegisterPage />} />
               </Route>
               <Route element={<PrivateRoute />}>
-                <Route path="admin" element={<AdminPage />} />
-                <Route path="users" element={<UsersPage />} />
+                {isAdmin && <Route path="admin" element={<AdminPage />} />}
+                {isAdmin && <Route path="users" element={<UsersPage />} />}
+
                 <Route path="/" element={<MainPage />} />
               </Route>
             </Route>
