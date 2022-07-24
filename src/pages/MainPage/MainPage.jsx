@@ -3,7 +3,11 @@ import TreeForm from "../../components/TreeForm/TreeForm";
 import TreesList from "../../components/TreesList/TreesList";
 import { NavLink } from "react-router-dom";
 import s from "./MainPage.module.scss";
+
+import React from "react";
+
 const Logo = require("../../images/logo.png");
+
 const MainPage = () => {
   return (
     <section className={`container ${s.main}`}>
@@ -22,6 +26,7 @@ const MainPage = () => {
           Розпочати
         </NavLink>
       </div>
+
       {/* <div className={s.contact_wrapper}>
         <div className={s.contact}>
           <TreeForm />

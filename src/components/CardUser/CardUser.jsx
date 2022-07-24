@@ -2,14 +2,14 @@ import { useDispatch } from "react-redux";
 import { delUserById, getAllUsers } from "../../redux/user/userOperations";
 import s from "./CardUser.module.scss";
 
-const CardUser = ({ contact,closeModal }) => {
-const dispatch=useDispatch();
-  const handleDelete = async(e) => {
+const CardUser = ({ contact, closeModal }) => {
+  const dispatch = useDispatch();
+  const handleDelete = async (e) => {
     const _id = e.target.value;
     console.log("_id :>> ", _id);
-    await dispatch(delUserById(_id))
+    await dispatch(delUserById(_id));
     closeModal(true);
-    dispatch(getAllUsers())
+    dispatch(getAllUsers());
   };
 
   return (
