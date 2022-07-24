@@ -10,6 +10,8 @@ import { getTheme } from "../../redux/theme/themeSelector";
 import FormikSelect from "../_shared/LabelForm/FormikSelect";
 import { addTree } from "../../redux/trees/treesOperations";
 import { TreeValidationSchema } from "../../utils/validation/TreeValid";
+import LabelForm from "../_shared/LabelForm/LabelForm";
+import FormikInput from "../_shared/LabelForm/FormikInput";
 
 export default function TreeForm() {
   const dispatch = useDispatch();
@@ -45,8 +47,8 @@ export default function TreeForm() {
   const radius = [
     {
       options: [
-        { label: "<1 ", value: "<1" },
-        { label: "1 ", value: "1" },
+        // { label: "<1 ", value: "<1" },
+        { label: "1", value: "1" },
         { label: "2", value: "2" },
         { label: "3", value: "3" },
         { label: "4", value: "4" },
@@ -68,9 +70,9 @@ export default function TreeForm() {
       />
       <Formik
         initialValues={{
-          radius: "others",
+          radius: "",
+          treeOld: "",
           treeType: "other",
-          treeOld: "other",
           checked: [],
         }}
         // validationSchema={TreeValidationSchema}
@@ -96,23 +98,29 @@ export default function TreeForm() {
             <form onSubmit={handleSubmit} className={s.authFormInput}>
               <label className={s.label}>
                 Радіус
-                <Field
+                {/* <Field
                   name="radius"
                   component={FormikSelect}
                   value={values.radius}
                   onChange={handleChange}
                   options={radius}
-                />
-                <ErrorMessage
+                /> 
+                 <ErrorMessage
                   component="div"
                   name="radius"
                   className={s.errorMessage}
+                />*/}
+                <FormikInput
+                  type="radius"
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  values={values}
                 />
               </label>
 
-              <labell className={s.label}>
+              <label className={s.label}>
                 Кількість років
-                <Field
+                {/* <Field
                   name="treeOld"
                   component={FormikSelect}
                   value={values.treeOld}
@@ -123,10 +131,16 @@ export default function TreeForm() {
                   component="div"
                   name="treeOld"
                   className={s.errorMessage}
+                /> */}
+                <FormikInput
+                  type="treeOld"
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  values={values}
                 />
-              </labell>
+              </label>
 
-              <labell className={s.label}>
+              <label className={s.label}>
                 Вид дерева
                 <Field
                   name="treeType"
@@ -140,11 +154,11 @@ export default function TreeForm() {
                   name="treeType"
                   className={s.errorMessage}
                 />
-              </labell>
+              </label>
 
-              <div role="group" aria-labelledby="checkbox-group">
+              <div role="group" aria-labeledby="checkbox-group">
                 <div>
-                  <labell className={s.label_checkbox}>
+                  <label className={s.label_checkbox}>
                     <Field type="checkbox" name="checked" value="resize" />
                     Чи неохідно обрізати
                     {/* <ErrorMessage
@@ -152,10 +166,10 @@ export default function TreeForm() {
                       value="resize"
                       className={s.errorMessage}
                     /> */}
-                  </labell>
+                  </label>
                 </div>
                 <div>
-                  <labell className={s.label_checkbox}>
+                  <label className={s.label_checkbox}>
                     <Field type="checkbox" name="checked" value="cut" />
                     "Необхідно підстригти крону"
                     {/* <ErrorMessage
@@ -163,10 +177,10 @@ export default function TreeForm() {
                       value="cut"
                       className={s.errorMessage}
                     /> */}
-                  </labell>
+                  </label>
                 </div>
                 <div>
-                  <labell className={s.lalabel_checkboxbel}>
+                  <label className={s.lalabel_checkboxbel}>
                     <Field type="checkbox" name="checked" value="colorize" />
                     "Необхідно кольорувати"
                     {/* <ErrorMessage
@@ -174,10 +188,10 @@ export default function TreeForm() {
                       value="colorize"
                       className={s.errorMessage}
                     /> */}
-                  </labell>
+                  </label>
                 </div>
                 <div>
-                  <labell className={s.label_checkbox}>
+                  <label className={s.label_checkbox}>
                     <Field type="checkbox" name="checked" value="cut off" />
                     "Необхідно зрізати"
                     {/* <ErrorMessage
@@ -185,10 +199,10 @@ export default function TreeForm() {
                       value="cut off"
                       className={s.errorMessage}
                     /> */}
-                  </labell>
+                  </label>
                 </div>
                 <div>
-                  <labell className={s.label_checkbox}>
+                  <label className={s.label_checkbox}>
                     <Field type="checkbox" name="checked" value="change" />
                     "Необхідно замінити на нове"
                     {/* <ErrorMessage
@@ -196,7 +210,7 @@ export default function TreeForm() {
                       value="change"
                       className={s.errorMessage}
                     /> */}
-                  </labell>
+                  </label>
                 </div>
               </div>
 

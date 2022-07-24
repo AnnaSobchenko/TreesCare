@@ -9,6 +9,15 @@
   align-items: center;
   margin-bottom: 20px;
 }
+.form__container {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
 // .label_wrapper {
 //   display: flex;
 //   margin-bottom: 20px;

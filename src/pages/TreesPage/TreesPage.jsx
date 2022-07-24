@@ -43,8 +43,9 @@ const TreesPage = () => {
   };
 
   return (
-    <>
+    <div style={{ display: "flex" }}>
       <TreesList />
+      <TreeForm />
       {/* <ul className={s.list}>
         {users.map((user) => (
           <li
@@ -62,7 +63,7 @@ const TreesPage = () => {
           <CardTree contact={modal.content} closeModal={closeModal} />
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 
