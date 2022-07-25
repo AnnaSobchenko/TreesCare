@@ -17,13 +17,15 @@ const CardUser = ({ contact, closeModal }) => {
       <div className={s.usercard}>
         <p className={s.card__name}>{contact.name}</p>
         <p className={s.card__email}>{contact.email}</p>
-        <button
-          value={contact._id}
-          className={s.btn}
-          onClick={(e) => handleDelete(e)}
-        >
-          Delete "{contact.name}"
-        </button>
+        {contact.email !== "admin@mail.com" && (
+          <button
+            value={contact._id}
+            className={s.btn}
+            onClick={(e) => handleDelete(e)}
+          >
+            Delete "{contact.name}"
+          </button>
+        )}
       </div>
     </div>
   );

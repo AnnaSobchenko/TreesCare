@@ -11,7 +11,7 @@
       padding: 10px;
       &:hover {
         cursor: pointer;
-        box-shadow: 6px 10px var(--shadow-color), -6px -10px var(--shadow-color);
+        box-shadow:  var(--shadow-color)  0px 5px 15px;        
       }
   
       .text {
@@ -24,5 +24,13 @@
         }
       }
     }
+    .btn{
+      display: flex;
+      justify-content: space-around;
+    &__action{
+      padding: 5px;
+      border-radius: 3px;
+      min-width: 100px;
+    }}
   }
   

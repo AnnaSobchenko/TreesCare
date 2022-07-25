@@ -47,14 +47,14 @@ const AdminPage = () => {
           treesAdmin.map((tree) => (
             <li
               key={tree._id}
-              id={tree.registrationNumber}
+              id={tree.trees.registrationNumber}
               onClick={(e) => handleOpenModal(e)}
             >
-              <p className={s.text__name}>{tree.trees.kindOfTree}</p>
-              <p className={s.text__name}>{tree.trees.age}</p>
-              {isAdmin && (
-                <button className={s.text__email}> {tree.method}</button>
-              )}
+              <CardTree contact={tree.trees} />
+              <div className={s.btn}>
+                <button className={s.btn__action}>{tree.method}</button>
+                <button className={s.btn__action}>cancel</button>
+              </div>
             </li>
           ))}
       </ul>

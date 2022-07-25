@@ -9,7 +9,7 @@
     padding: 10px;
     &:hover {
       cursor: pointer;
-      box-shadow: 6px 10px var(--shadow-color), -6px -10px var(--shadow-color),
+      box-shadow:var(--box-shadow-color) 0px 6px 10px ;
     }
 
     .text {

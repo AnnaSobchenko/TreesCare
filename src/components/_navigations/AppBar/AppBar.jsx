@@ -83,7 +83,7 @@ const AppBar = () => {
           )}
         </div>
 
-        <>
+        <div className={s.logout} >
           {isLoggedIn && (
             <div
               className={s.flex}
@@ -122,7 +122,7 @@ const AppBar = () => {
           )}
           <SwitchTheme />
 
-          <MediaQuery minWidth={768}>
+          {/* <MediaQuery minWidth={768}> */}
             {isLoggedIn && (
               <NavLink
                 to="/login"
@@ -157,8 +157,9 @@ const AppBar = () => {
                 </div>
               </NavLink>
             )}
-          </MediaQuery>
-        </>
+          {/* </MediaQuery> */}
+          
+        </div>
         {/* <SwitchLang /> */}
       </header>
       <Outlet className="container" />

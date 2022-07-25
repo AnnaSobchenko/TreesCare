@@ -11,7 +11,8 @@
     var(--gradient2) 6%,
     var(--gradient3) 100%
   );
-  box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
+  box-shadow:var(--box-shadow-color) 0px 5px 15px;
+
   box-sizing: border-box;
 
   @media screen and (min-width: 768px) {
@@ -19,11 +20,6 @@
     width: 501px;
   }
 
-  @media screen and (min-width: 1280px) {
-    margin-bottom: 100px;
-    margin-top: 100px;
-   
-  }
   input {
     background: #e8f0fe;
     width: 95%;
