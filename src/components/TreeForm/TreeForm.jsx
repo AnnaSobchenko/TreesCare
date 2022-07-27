@@ -13,11 +13,13 @@ import { TreeValidationSchema } from "../../utils/validation/TreeValid";
 import LabelForm from "../_shared/LabelForm/LabelForm";
 import FormikInput from "../_shared/LabelForm/FormikInput";
 
-export default function TreeForm({ content, closeModal }) {
+const TreeForm = ({ contact, closeModal }) => {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
 
-  const treeTypes = [
+  console.log("contact TreeForm", contact);
+
+  const kindOfTree = [
     {
       options: [
         { label: "Дуб", value: "oak" },
@@ -31,7 +33,7 @@ export default function TreeForm({ content, closeModal }) {
       ],
     },
   ];
-  const treeOlds = [
+  const age = [
     {
       options: [
         { label: "1-3 ", value: "1-3" },
@@ -56,7 +58,7 @@ export default function TreeForm({ content, closeModal }) {
       ],
     },
   ];
-
+const location=contact
   return (
     <div className={s.wrapper}>
       <ToastContainer
@@ -71,16 +73,18 @@ export default function TreeForm({ content, closeModal }) {
       <Formik
         initialValues={{
           radius: "",
-          treeOld: "",
-          treeType: "other",
-          checked: [],
+          age: "",
+          kindOfTree: "other",
+          necessaryWorks: [],
         }}
         // validationSchema={TreeValidationSchema}
         onSubmit={(values, { resetForm }) => {
+          console.log("content", contact);
           console.log("values", values);
-          dispatch(addTree({ form: { ...values, content }, method: "add" }));
+          dispatch(addTree({ form: { ...values, location }, method: "add" }));
           toast.success("tree adds to list");
           resetForm();
+          closeModal(true);
           // onHandleClose();
         }}
       >
@@ -133,7 +137,7 @@ export default function TreeForm({ content, closeModal }) {
                   className={s.errorMessage}
                 /> */}
                 <FormikInput
-                  type="treeOld"
+                  type="age"
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                   values={values}
@@ -143,15 +147,15 @@ export default function TreeForm({ content, closeModal }) {
               <label className={s.label}>
                 Вид дерева
                 <Field
-                  name="treeType"
+                  name="kindOfTree"
                   component={FormikSelect}
-                  value={values.treeType}
+                  value={values.kindOfTree}
                   onChange={handleChange}
-                  options={treeTypes}
+                  options={kindOfTree}
                 />
                 <ErrorMessage
                   component="div"
-                  name="treeType"
+                  name="kindOfTree"
                   className={s.errorMessage}
                 />
               </label>
@@ -159,7 +163,11 @@ export default function TreeForm({ content, closeModal }) {
               <div role="group" aria-labeledby="checkbox-group">
                 <div>
                   <label className={s.label_checkbox}>
-                    <Field type="checkbox" name="checked" value="resize" />
+                    <Field
+                      type="checkbox"
+                      name="necessaryWorks"
+                      value="resize"
+                    />
                     Чи неохідно обрізати
                     {/* <ErrorMessage
                       component="div"
@@ -170,7 +178,7 @@ export default function TreeForm({ content, closeModal }) {
                 </div>
                 <div>
                   <label className={s.label_checkbox}>
-                    <Field type="checkbox" name="checked" value="cut" />
+                    <Field type="checkbox" name="necessaryWorks" value="cut" />
                     "Необхідно підстригти крону"
                     {/* <ErrorMessage
                       component="div"
@@ -181,7 +189,11 @@ export default function TreeForm({ content, closeModal }) {
                 </div>
                 <div>
                   <label className={s.lalabel_checkboxbel}>
-                    <Field type="checkbox" name="checked" value="colorize" />
+                    <Field
+                      type="checkbox"
+                      name="necessaryWorks"
+                      value="colorize"
+                    />
                     "Необхідно кольорувати"
                     {/* <ErrorMessage
                       component="div"
@@ -192,7 +204,11 @@ export default function TreeForm({ content, closeModal }) {
                 </div>
                 <div>
                   <label className={s.label_checkbox}>
-                    <Field type="checkbox" name="checked" value="cut off" />
+                    <Field
+                      type="checkbox"
+                      name="necessaryWorks"
+                      value="cut off"
+                    />
                     "Необхідно зрізати"
                     {/* <ErrorMessage
                       component="div"
@@ -203,7 +219,11 @@ export default function TreeForm({ content, closeModal }) {
                 </div>
                 <div>
                   <label className={s.label_checkbox}>
-                    <Field type="checkbox" name="checked" value="change" />
+                    <Field
+                      type="checkbox"
+                      name="necessaryWorks"
+                      value="change"
+                    />
                     "Необхідно замінити на нове"
                     {/* <ErrorMessage
                       component="div"
@@ -231,10 +251,22 @@ export default function TreeForm({ content, closeModal }) {
               >
                 Додати
               </button>
+              <button
+                type="button"
+                onClick={()=>{closeModal(true)}}
+                className={s.btn}
+                style={{
+                  color: theme === "light" ? "black" : "white",
+                }}
+              >
+                Cancel
+              </button>
             </form>
           </div>
         )}
       </Formik>
     </div>
   );
-}
+};
+
+export default TreeForm;

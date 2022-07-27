@@ -67,7 +67,7 @@ export async function getAllTreesApi() {
 }
 export async function addTreeApi(treeData) {
   console.log("treeData", treeData);
-  const data={trees:{treeData}, method:"add"}
+  const data={trees:{...treeData}, method:"add"}
   const { message } = await axios.post("/api/trees/add", data);
   return message;
 }

@@ -27,6 +27,7 @@ const CardTree = ({ contact, closeModal }) => {
         </p>
         <p className={s.text}> {necessaryWorks} </p>
       </div>
+      <button type="button" onClick={()=>{closeModal(true)}}>Close</button>
     </div>
   );
 };

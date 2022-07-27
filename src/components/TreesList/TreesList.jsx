@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTrees } from "../../redux/trees/treesSelector";
 import TreeForm from "../TreeForm/TreeForm";
 import { getIsLoggedIn } from "../../redux/auth/authSelector";
+const uuid = require("uuid");
 
 const TreesList = () => {
   const [anchor, setAnchor] = useState([49.23435015414822, 28.458172138820828]);
@@ -20,8 +21,11 @@ const TreesList = () => {
   const dispatch = useDispatch();
   const allTrees = useSelector(getTrees);
   const isLoggedIn = useSelector(getIsLoggedIn);
+  const [addLocation, setAddLocation] = useState([]);
 
   const mapClick = (e) => {
+    // console.log("e :>> ", e);
+    setAddLocation(e.latLng);
     setAnchor(e.latLng);
     setShowBtn(false);
   };
@@ -36,6 +40,7 @@ const TreesList = () => {
   });
 
   const openModal = (content) => {
+    console.log('content openModal :>> ', content);
     setModal({
       open: true,
       content,
@@ -51,7 +56,13 @@ const TreesList = () => {
     });
   };
   const handleOpenModal = (data) => {
-    openModal(data);
+  //  console.log('addLocation.length', addLocation.length)
+  //   addLocation.length
+  //     ? openModal({ lat: addLocation[0], lng: addLocation[1] })
+  //     : openModal(data);
+
+  console.log('data handleOpenModal:>> ', data);
+      openModal(data);
   };
 
   const showTreeModal = (data) => {
@@ -60,6 +71,7 @@ const TreesList = () => {
   };
 
   const addTreeModal = (data) => {
+    console.log('data addTreeModal:>> ', data);
     handleOpenModal(data);
     setAddTree(true);
   };
@@ -67,6 +79,8 @@ const TreesList = () => {
   useEffect(() => {
     dispatch(getAllTrees());
   }, []);
+
+  
 
   return (
     <section className={s.treesSection}>
@@ -103,7 +117,7 @@ const TreesList = () => {
               width={radius}
               anchor={[location.lat, location.lng]}
               color="green"
-              key={registrationNumber}
+              key={registrationNumber + uuid.v4()}
               onClick={() => showTreeModal(data)}
             />
           );
@@ -120,7 +134,7 @@ const TreesList = () => {
         )}
       </Map>
       {showBtn && isLoggedIn && (
-        <button className={s.addBtn} onClick={(data) => addTreeModal(data)}>
+        <button className={s.addBtn} onClick={() => addTreeModal({ lat: addLocation[0], lng: addLocation[1] })}>
           Додати дерево
         </button>
       )}
