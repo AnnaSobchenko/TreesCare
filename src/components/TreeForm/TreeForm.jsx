@@ -76,6 +76,8 @@ const location=contact
           age: "",
           kindOfTree: "other",
           necessaryWorks: [],
+          image:"tree.jpg", 
+          location:{lat:49.23435015414822, lng: 28.458172138820828}
         }}
         // validationSchema={TreeValidationSchema}
         onSubmit={(values, { resetForm }) => {
@@ -166,7 +168,7 @@ const location=contact
                     <Field
                       type="checkbox"
                       name="necessaryWorks"
-                      value="resize"
+                      value="resize:true"
                     />
                     Чи неохідно обрізати
                     {/* <ErrorMessage
@@ -207,7 +209,7 @@ const location=contact
                     <Field
                       type="checkbox"
                       name="necessaryWorks"
-                      value="cut off"
+                      value="cut_off"
                     />
                     "Необхідно зрізати"
                     {/* <ErrorMessage
@@ -233,13 +235,13 @@ const location=contact
                   </label>
                 </div>
               </div>
-              <label for="avatar" className={s.label}>
+              <label for="image" className={s.label}>
                 Добавити фото дерева:
               </label>
               <input
                 type="file"
-                id="avatar"
-                name="avatar"
+                id="image"
+                name="image"
                 accept="image/png, image/jpeg"
               ></input>
               <button

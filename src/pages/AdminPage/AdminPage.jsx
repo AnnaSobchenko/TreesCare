@@ -9,6 +9,7 @@ import s from "./AdminPage.module.scss";
 
 const AdminPage = () => {
   const isAdmin = useSelector(getIsAdmin);
+  const treesAdmin = useSelector(getAdminTrees);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,7 +40,12 @@ const AdminPage = () => {
     const userInfo = trees.find((el) => el.email === email);
     openModal(userInfo);
   };
-  const treesAdmin = useSelector(getAdminTrees);
+
+  const handleSendAddTree=(e)=>{
+    console.log('e', e.target.id)
+  }
+
+  
   return (
     <section className={`container ${s.main}`}>
       <ul className={s.list}>
@@ -52,7 +58,7 @@ const AdminPage = () => {
             >
               <CardTree contact={tree.trees} />
               <div className={s.btn}>
-                <button className={s.btn__action}>{tree.method}</button>
+                <button id={tree.method} className={s.btn__action} onClick={(e)=>handleSendAddTree(e)}>{tree.method}</button>
                 <button className={s.btn__action}>cancel</button>
               </div>
             </li>

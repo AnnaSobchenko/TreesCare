@@ -21,7 +21,7 @@ const TreesList = () => {
   const dispatch = useDispatch();
   const allTrees = useSelector(getTrees);
   const isLoggedIn = useSelector(getIsLoggedIn);
-  const [addLocation, setAddLocation] = useState([]);
+  const [addLocation, setAddLocation] = useState(anchor);
 
   const mapClick = (e) => {
     // console.log("e :>> ", e);
@@ -40,7 +40,6 @@ const TreesList = () => {
   });
 
   const openModal = (content) => {
-    console.log('content openModal :>> ', content);
     setModal({
       open: true,
       content,
@@ -56,10 +55,6 @@ const TreesList = () => {
     });
   };
   const handleOpenModal = (data) => {
-  //  console.log('addLocation.length', addLocation.length)
-  //   addLocation.length
-  //     ? openModal({ lat: addLocation[0], lng: addLocation[1] })
-  //     : openModal(data);
 
   console.log('data handleOpenModal:>> ', data);
       openModal(data);
@@ -71,7 +66,6 @@ const TreesList = () => {
   };
 
   const addTreeModal = (data) => {
-    console.log('data addTreeModal:>> ', data);
     handleOpenModal(data);
     setAddTree(true);
   };

@@ -1,95 +1,60 @@
-.card{
+.cardTree {
+  width: 70vw;
+  max-width: 700px;
+  box-sizing: border-box;
+  min-height: 50vh;
+  height: 65vh;
+  // scroll
   display: flex;
-  flex-direction: row;
-  background-color: var(--primary-bg-color);
-  width:90%;
-  height: 240px;
+  flex-direction: column;
+  background-color: var(--primary-bg-color);  
+  // height: 300px;
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 14px;
 
+  .card {
+    display: flex;
+    flex-direction: row;}
 
-.img{
-  width: 95%;
-  height: 200px;
-  margin-right: 20px;
-}
-.title{
-  margin-bottom: 10px;
-}
-.text{
-  margin-bottom: 7px;
-  font-size: 14px;
-  line-height: 1.4;
+    .img {
+      width: 45%;
+      height: 200px;
+      margin-right: 20px;
+      padding: 10px;
+      
+      color: var(--secondary-text-color);
+    }
+    .title {
+      font-size: 1.7rem;
+       margin-left: 20px;
+    }
+    .text {
+      line-height: 1.2;
+      color: var(--secondary-text-color);
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      &__describe{
+        font-size: .9rem;
+        color: var(--accent-nav-color);
+      }
+    }}
+    .btn {
+      display: flex;
+      justify-content: space-between;
+      &__action {
+        background-color:inherit;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 10px;
+        border: none;
+        &:hover {
+          color: var(--contacts-vector);
+        }
+      }
+    
+    .navIcon_close {
+      display: flex;
+     use{ fill: inherit}
+    }
+  }
 
-}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .card {
-//   display: flex;
-//   box-sizing: border-box;
-//   width: 50vw;
-//   height: 50vh;
-//   border-radius: 50px;
-//   background: var(--primary-bg-color);
-//   color: white;
-//   align-items: center;
-//   flex-direction: column;
-//   justify-content: center;
-//   .usercard {
-//     box-sizing: border-box;
-//     width: 90%;
-//     height: 90%;
-//     border: 1px solid var(--shadow-color);
-//     padding: 30px;
-//     border-radius: 30px;
-//     display: flex;
-//     align-items: center;
-//     flex-direction: column;
-//     justify-content: center;
-//   }
-
-//   &__name {
-//     line-height: 1;
-//     font-size: 5rem;
-//     margin: 0;
-//     padding: 10px;
-//   }
-
-//   &__email {
-//     margin: 0;
-//     padding: 10px;
-//     font-size: 1.5rem;
-//     line-height: 1;
-//   }
-
-//   .btn {
-//     font-size: .9rem;
-//     margin-top: 30px;
-//     padding: 5px 10px;
-//     border-radius: 5px;
-//     background-color: var( --btn-bg-color);
-//     &:hover {
-//       color: var(--check-color);
-//     }
-//   }
-// }

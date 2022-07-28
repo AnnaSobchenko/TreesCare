@@ -91,3 +91,8 @@ export async function getAllAdminApi() {
   const { data } = await axios.get("/api/admin/");
   return data;
 }
+export async function addTreeAdminApi(trees) {
+  const { data } = await axios.post("/api/admin/", trees);
+  console.log('data', data)
+  return data;
+}
