@@ -38,8 +38,7 @@ function App() {
         color: theme === "light" ? "black" : "white",
         minHeight: "100vh",
       }}
-    >
-      <div>
+    >      
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<AppBar />}>
@@ -52,14 +51,13 @@ function App() {
               <Route element={<PrivateRoute />}>
                 {isAdmin && <Route path="admin" element={<AdminPage />} />}
                 {isAdmin && <Route path="users" element={<UsersPage />} />}
-                <Route path="/" element={<MainPage />} />
+                <Route path="trees" element={<MainPage />} />
               </Route>
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<Navigate to="trees" replace />} />
             </Route>
           </Routes>
-        </Suspense>
-      </div>
-      <Footer />
+          <Footer />
+        </Suspense>      
     </div>
   );
 }

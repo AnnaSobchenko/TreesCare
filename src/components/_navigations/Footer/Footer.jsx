@@ -13,10 +13,9 @@ const Footer = () => {
       color: theme === "light" ? "black" : "white",
     }}>
       <p>
-      © 2022 | All Rights Reserved |&nbsp; Developed with
+      © 2022 | All Rights Reserved |&nbsp;</p><p> Developed with
            <span className={s.footerHeart}> ❤ </span> &zwnj;
-      </p>
-      <p> by BC13</p>
+      by BC13</p>
     </footer>
   );
 };

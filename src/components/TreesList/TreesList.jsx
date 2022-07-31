@@ -56,7 +56,7 @@ const TreesList = () => {
   };
   const handleOpenModal = (data) => {
 
-  console.log('data handleOpenModal:>> ', data);
+  // console.log('data handleOpenModal:>> ', data);
       openModal(data);
   };
 

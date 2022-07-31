@@ -2,7 +2,6 @@ import { React } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import Icons from "../../../images/symbol-defs.svg";
 import s from "./AppBar.module.scss";
-import MediaQuery from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getIsAdmin,
@@ -12,9 +11,11 @@ import {
 import { logout } from "../../../redux/auth/authOperations";
 import SwitchTheme from "../../SwitchTheme/SwitchTheme";
 import { getTheme } from "../../../redux/theme/themeSelector";
+import Svg from "../../_shared/Svg/Svg";
 // import SwitchLang from "../SwitchLang/SwitchLang";
 
 const Logo = require("../../../images/logo.png");
+const Tree = require("../../../images/tree.png");
 
 const AppBar = () => {
   const userInfo = useSelector(getUserName);
@@ -44,8 +45,10 @@ const AppBar = () => {
           <NavLink
             to="/trees"
             className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
-          >
-            Trees
+          > 
+          {/* &#127795; */}
+             <img src={Tree} alt="trees" />
+             <p>Tree</p>
           </NavLink>
 
           {isAdmin && (
@@ -53,7 +56,8 @@ const AppBar = () => {
               to="/admin"
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
             >
-              Admin
+              <p>Admin</p>
+              <Svg name="admins-cards" />
             </NavLink>
           )}
           {isAdmin && (
@@ -61,7 +65,8 @@ const AppBar = () => {
               to="/users"
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
             >
-              Users
+             <p> Users</p>
+              <Svg name="users" />
             </NavLink>
           )}
 
@@ -70,7 +75,8 @@ const AppBar = () => {
               to="/login"
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
             >
-              Login
+              <p>Login</p>
+              <Svg name="login" />
             </NavLink>
           )}
           {!isLoggedIn && (
@@ -78,7 +84,8 @@ const AppBar = () => {
               to="/register"
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
             >
-              Register
+              <p>Register</p>
+              <Svg name="signup" />
             </NavLink>
           )}
         </div>
@@ -122,7 +129,6 @@ const AppBar = () => {
           )}
           <SwitchTheme />
 
-          {/* <MediaQuery minWidth={768}> */}
             {isLoggedIn && (
               <NavLink
                 to="/login"
@@ -156,9 +162,7 @@ const AppBar = () => {
                   </svg>
                 </div>
               </NavLink>
-            )}
-          {/* </MediaQuery> */}
-          
+            )}          
         </div>
         {/* <SwitchLang /> */}
       </header>

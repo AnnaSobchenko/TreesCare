@@ -1,5 +1,7 @@
 .switch_theme_div {
+  @media screen and (min-width: 768px) {
   padding: 10px;
+  }
 
  .btnD{
   color: black;

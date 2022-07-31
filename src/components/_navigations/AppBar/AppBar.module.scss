@@ -2,10 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 79px;
+  height: 40px;
+  padding: 5px;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--primary-bg-color);
+
   @media screen and (min-width: 768px) {
+    height: 79px;
     font-size: 1.2rem;
     font-weight: 500;
     line-height: 1.33;
@@ -16,12 +19,36 @@
     line-height: 1.33;
     justify-content: space-between;
   }
+  img{
+    width: 70px;
+    @media screen and (min-width: 768px) {
+    width: 130px;
+    }
+  }
 
   .header_navLink {
-    display: none;
+    display: flex;
+    flex-direction: row;
+    img {
+      width: 25px;
+      height: 25px;
+    }
+    p {
+      display: none;
+    }
+   a{
+      margin-left: 10px;
+    }
     @media screen and (min-width: 768px) {
-      display: flex;
-      flex-direction: row;
+      img {
+        display: none;
+      }
+      p {
+        display: block;
+      }
+      a{
+        margin-left: 0;
+      }
     }
   }
 
@@ -40,7 +67,9 @@
     }
   }
   .logo {
-    padding-left: 20px;
+    padding-left: 10px;
+    @media screen and (min-width: 768px) {
+    padding-left: 20px;}
   }
 
   .logout {
@@ -48,7 +77,7 @@
     flex-direction: row;
     align-items: center;
     color: var(--primary-text-color);
-    font-weight: 500;
+    padding-right: 5px;
   }
 
   .activeStyle {
@@ -65,9 +94,11 @@
   }
 }
 .name_wrapper {
+  width: 33px;
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
+    width: 100px;
   }
 }
 
@@ -109,7 +140,7 @@
 
 .navIconMenu_wrapper {
   display: flex;
-  width: 51px;
+  width: 20px;
   height: 67px;
   background-color: var(--primary-bg-color);
   justify-content: center;
@@ -117,6 +148,7 @@
   flex-wrap: wrap;
   @media screen and (min-width: 768px) {
     margin-left: 0;
+    width: 51px;
   }
 }
 
