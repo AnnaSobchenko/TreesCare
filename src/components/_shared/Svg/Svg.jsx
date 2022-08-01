@@ -13,7 +13,7 @@ const Svg = ({ name }) => {
             theme === "light"
               ? "var(--primary-bg-color)"
               : "var(--second-bg-color)",
-          fill: theme === "light" ? "black" : "white",
+          // fill: theme === "light" ? "var(--accent-nav-color)" : "white",
         }}
         width="23px"
         height="23px"

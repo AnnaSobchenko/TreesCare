@@ -45,10 +45,10 @@ const AppBar = () => {
           <NavLink
             to="/trees"
             className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
-          > 
-          {/* &#127795; */}
-             <img src={Tree} alt="trees" />
-             <p>Tree</p>
+          >
+            {/* &#127795; */}
+            <img src={Tree} alt="trees" />
+            <p>Tree</p>
           </NavLink>
 
           {isAdmin && (
@@ -65,7 +65,7 @@ const AppBar = () => {
               to="/users"
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
             >
-             <p> Users</p>
+              <p> Users</p>
               <Svg name="users" />
             </NavLink>
           )}
@@ -85,12 +85,14 @@ const AppBar = () => {
               className={({ isActive }) => (isActive ? s.activeStyle : s.link)}
             >
               <p>Register</p>
-              <Svg name="signup" />
+              <div className={s.register}>
+                <Svg name="signup" />
+              </div>
             </NavLink>
           )}
         </div>
 
-        <div className={s.logout} >
+        <div className={s.logout}>
           {isLoggedIn && (
             <div
               className={s.flex}
@@ -129,40 +131,40 @@ const AppBar = () => {
           )}
           <SwitchTheme />
 
-            {isLoggedIn && (
-              <NavLink
-                to="/login"
-                onClick={() => {
-                  dispatch(logout());
+          {isLoggedIn && (
+            <NavLink
+              to="/login"
+              onClick={() => {
+                dispatch(logout());
+              }}
+            >
+              <div
+                className={s.navIconMenu_wrapper}
+                style={{
+                  backgroundColor:
+                    theme === "light"
+                      ? "var(--primary-bg-color)"
+                      : "var(--second-bg-color)",
+                  fill: theme === "light" ? "black" : "white",
                 }}
               >
-                <div
-                  className={s.navIconMenu_wrapper}
+                <svg
+                  className={s.navIcon_signOut}
                   style={{
                     backgroundColor:
                       theme === "light"
                         ? "var(--primary-bg-color)"
                         : "var(--second-bg-color)",
-                    fill: theme === "light" ? "black" : "white",
+                    // fill: theme === "light" ? "black" : "white",
                   }}
+                  width="16px"
+                  height="16px"
                 >
-                  <svg
-                    className={s.navIcon_signOut}
-                    style={{
-                      backgroundColor:
-                        theme === "light"
-                          ? "var(--primary-bg-color)"
-                          : "var(--second-bg-color)",
-                      fill: theme === "light" ? "black" : "white",
-                    }}
-                    width="16px"
-                    height="16px"
-                  >
-                    <use xlinkHref={`${Icons}#icon-sign-out`} />
-                  </svg>
-                </div>
-              </NavLink>
-            )}          
+                  <use xlinkHref={`${Icons}#icon-sign-out`} />
+                </svg>
+              </div>
+            </NavLink>
+          )}
         </div>
         {/* <SwitchLang /> */}
       </header>

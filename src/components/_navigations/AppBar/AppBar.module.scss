@@ -20,10 +20,10 @@
     line-height: 1.33;
     justify-content: space-between;
   }
-  img{
+  img {
     width: 70px;
     @media screen and (min-width: 768px) {
-    width: 130px;
+      width: 130px;
     }
   }
 
@@ -37,8 +37,14 @@
     p {
       display: none;
     }
-   a{
+    a {
       margin-left: 10px;
+    }
+    svg {
+      fill: var(--accent-nav-color);
+    }
+    .register {
+      padding-top: 3px;
     }
     @media screen and (min-width: 768px) {
       img {
@@ -47,8 +53,11 @@
       p {
         display: block;
       }
-      a{
+      a {
         margin-left: 0;
+      }
+      .register {
+        padding-top: 0px;
       }
     }
   }
@@ -70,7 +79,8 @@
   .logo {
     padding-left: 10px;
     @media screen and (min-width: 768px) {
-    padding-left: 20px;}
+      padding-left: 20px;
+    }
   }
 
   .logout {
@@ -79,6 +89,7 @@
     align-items: center;
     color: var(--primary-text-color);
     padding-right: 5px;
+    fill: var(--accent-nav-color);
   }
 
   .activeStyle {
@@ -168,8 +179,8 @@
 }
 
 .navIcon_signOut {
-  display: flex;
-  fill: #ffffff;
+  display: flex;  
+  fill: var(--accent-nav-color);
 }
 
 .text_transform {
