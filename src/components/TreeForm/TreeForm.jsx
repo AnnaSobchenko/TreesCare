@@ -17,8 +17,6 @@ const TreeForm = ({ contact, closeModal }) => {
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
 
-  console.log("contact TreeForm", contact);
-
   const kindOfTree = [
     {
       options: [
@@ -58,17 +56,19 @@ const TreeForm = ({ contact, closeModal }) => {
       ],
     },
   ];
-const location=contact
+  const location = contact;
   return (
     <div className={s.wrapper}>
       <ToastContainer
-        position="top-center"
+        position={toast.POSITION.TOP_CENTER} //"top-center"
         autoClose={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
+        enableMultiContainer
+        containerId={"B"}
       />
       <Formik
         initialValues={{
@@ -76,18 +76,14 @@ const location=contact
           age: "",
           kindOfTree: "other",
           necessaryWorks: [],
-          image:"tree.jpg", 
-          location:{lat:49.23435015414822, lng: 28.458172138820828}
+          image: "tree.jpg",
+          location: { lat: 49.23435015414822, lng: 28.458172138820828 },
         }}
         // validationSchema={TreeValidationSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log("content", contact);
-          console.log("values", values);
           dispatch(addTree({ form: { ...values, location }, method: "add" }));
-          toast.success("tree adds to list");
           resetForm();
           closeModal(true);
-          // onHandleClose();
         }}
       >
         {({
@@ -247,6 +243,9 @@ const location=contact
               <button
                 type="submit"
                 className={s.btn}
+                onClick={() => {
+                  toast.success("tree adds to list", { containerId: "B" });
+                }}
                 style={{
                   color: theme === "light" ? "black" : "white",
                 }}
@@ -255,7 +254,10 @@ const location=contact
               </button>
               <button
                 type="button"
-                onClick={()=>{closeModal(true)}}
+                onClick={() => {
+                  // toast.success("tree adds to list", { containerId: "B" });
+                  closeModal(true);
+                }}
                 className={s.btn}
                 style={{
                   color: theme === "light" ? "black" : "white",

@@ -57,7 +57,7 @@ export async function getAllUsersApi() {
 }
 
 export async function delUserByIdApi(id) {
-  console.log("{id}", id);
+  // console.log("{id}", id);
   await axios.delete(`/api/users/${id}`, id);
   return;
 }
@@ -66,18 +66,18 @@ export async function getAllTreesApi() {
   return data;
 }
 export async function addTreeApi(treeData) {
-  console.log("treeData", treeData);
-  const data={trees:{...treeData}, method:"add"}
+  // console.log("treeData", treeData);
+  const data = { trees: { ...treeData }, method: "add" };
   const { message } = await axios.post("/api/trees/add", data);
   return message;
 }
-export async function updateTreeApi(treeData) {  
-  const data={trees:{treeData}, method:"update"}
+export async function updateTreeApi(treeData) {
+  const data = { trees: { treeData }, method: "update" };
   const { message } = await axios.post("/api/trees/add", data);
   return message;
 }
-export async function deleteTreeApi(treeData) {  
-  const data={trees:{treeData}, method:"delete"}
+export async function deleteTreeApi(treeData) {
+  const data = { trees: { treeData }, method: "delete" };
   await axios.delete("/api/trees/add", data);
   return;
 }
@@ -93,6 +93,5 @@ export async function getAllAdminApi() {
 }
 export async function addTreeAdminApi(trees) {
   const { data } = await axios.post("/api/admin/", trees);
-  console.log('data', data)
   return data;
 }

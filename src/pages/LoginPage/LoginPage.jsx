@@ -2,19 +2,10 @@ import AuthForm from "../../components/AuthForm/AuthForm";
 import s from "./LoginPage.module.scss";
 import { useSelector } from "react-redux";
 import { getTheme } from "../../redux/theme/themeSelector";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
-  <ToastContainer
-  position="top-center"
-  autoClose={false}
-  newestOnTop={false}
-  closeOnClick
-  rtl={false}
-  pauseOnFocusLoss
-  draggable
-/>
-
   const theme = useSelector(getTheme);
   return (
     <div
@@ -27,6 +18,18 @@ const LoginPage = () => {
         color: theme === "light" ? "black" : "white",
       }}
     >
+      <ToastContainer
+        position={toast.POSITION.TOP_CENTER} //"top-center"
+        autoClose={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        enableMultiContainer
+        containerId={"A"}
+      />
+      ;
       <AuthForm isAuth={false} />
     </div>
   );

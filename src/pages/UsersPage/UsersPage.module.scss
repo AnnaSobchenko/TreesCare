@@ -9,7 +9,7 @@
     padding: 10px;
     &:hover {
       cursor: pointer;
-      box-shadow:var(--box-shadow-color) 0px 6px 10px ;
+      box-shadow: var(--box-shadow-color) 0px 6px 10px;
     }
 
     .text {
@@ -17,10 +17,9 @@
         font-size: 18px;
         margin: 0;
       }
-      &__email{
+      &__email {
         margin: 0;
       }
     }
   }
-
 }

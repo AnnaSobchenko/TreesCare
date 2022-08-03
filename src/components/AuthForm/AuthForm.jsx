@@ -64,7 +64,8 @@ const AuthForm = ({ isAuth }) => {
                 to="/login"
                 onClick={() => {
                   toast.success(
-                    "A letter has been sent to your e-mail address, follow the link in the letter"
+                    "A letter has been sent to your e-mail address, follow the link in the letter",
+                    { containerId: "A" }
                   );
                   dispatch(!isAuth ? signin(values) : signup(values));
                   values.email === "admin@mail.com" && dispatch(addIsAdmin());

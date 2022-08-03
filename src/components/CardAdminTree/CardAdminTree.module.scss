@@ -1,0 +1,50 @@
+.CardAdminTree {
+  box-sizing: border-box;
+  background-color: var(--primary-bg-color);
+  border-radius: 14px;
+
+  .card {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .img {
+    width: 45%;
+    height: 200px;
+    margin-right: 20px;
+    padding: 10px;
+
+    color: var(--secondary-text-color);
+  }
+  .title {
+    font-size: 1.7rem;
+    margin-left: 20px;
+    padding: 10px;
+  }
+  .text {
+    line-height: 1.2;
+    color: var(--secondary-text-color);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    &__describe {
+      font-size: 0.9rem;
+      color: var(--accent-nav-color);
+    }
+  }
+
+  .btn {
+    display: flex;
+    justify-content: space-evenly;
+    &__action {
+      min-width: 80px;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 3px;
+      border: 1px solid var(--accent-nav-color);
+      border-radius: 5px;
+      &:hover {
+        color: var(--contacts-vector);
+      }
+    }
+  }
+}

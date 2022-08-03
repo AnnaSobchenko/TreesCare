@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CardAdminTree from "../../components/CardAdminTree/CardAdminTree";
 import CardTree from "../../components/CardTree/CardTree";
 import Modal from "../../components/Modal/Modal";
 import { getAllAdmin } from "../../redux/admin/adminOperations";
@@ -41,13 +42,12 @@ const AdminPage = () => {
     openModal(userInfo);
   };
 
-  const handleSendAddTree=(e)=>{
-    console.log('e', e.target.id)
-  }
+  const handleSendAddTree = (e) => {
+    console.log("e", e.target.id);
+  };
 
-  
   return (
-    <section className={`container ${s.main}`}>
+    <section className={`container `}>
       <ul className={s.list}>
         {Boolean(trees.treesAdmin.length) &&
           treesAdmin.map((tree) => (
@@ -56,11 +56,7 @@ const AdminPage = () => {
               id={tree.trees.registrationNumber}
               onClick={(e) => handleOpenModal(e)}
             >
-              <CardTree contact={tree.trees} />
-              <div className={s.btn}>
-                <button id={tree.method} className={s.btn__action} onClick={(e)=>handleSendAddTree(e)}>{tree.method}</button>
-                <button className={s.btn__action}>cancel</button>
-              </div>
+              <CardAdminTree contact={tree.trees} method={tree.method} />
             </li>
           ))}
       </ul>

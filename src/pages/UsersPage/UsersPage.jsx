@@ -42,7 +42,7 @@ const UsersPage = () => {
   
 
   return (
-    <section className={`container ${s.main}`}>
+    <section className={`container`}>
       <ul className={s.list}>
         {users.map((user) => (
           <li
