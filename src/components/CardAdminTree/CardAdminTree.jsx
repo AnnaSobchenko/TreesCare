@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { getTheme } from "../../redux/theme/themeSelector";
 import s from "./CardAdminTree.module.scss";
+const Tree = require("../../images/tree.png");
 
 const CardAdminTree = ({ contact, method, closeModal }) => {
   const {
@@ -26,7 +27,7 @@ const CardAdminTree = ({ contact, method, closeModal }) => {
     <div className={s.CardAdminTree}>
       <h2 className={s.title}>{kindOfTree.toUpperCase()}</h2>
       <div className={s.card}>
-        <img className={s.img} src={image} alt="imageTree" />
+        <img className={s.img} src={Tree} alt="imageTree" />
         <div>
           <p className={s.text__describe}>Radius</p>
           <p className={s.text}>{radius} m</p>

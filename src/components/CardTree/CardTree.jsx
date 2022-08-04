@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { getTheme } from "../../redux/theme/themeSelector";
 import s from "./CardTree.module.scss";
-
 import Icons from "../../images/symbol-defs.svg";
+const Tree = require("../../images/tree.png");
 // const TreeImg = require("../../images/spruce.jpg");
 
 const CardTree = ({ contact, closeModal }) => {
@@ -49,7 +49,7 @@ const CardTree = ({ contact, closeModal }) => {
         </button>
       </div>
       <div className={s.card}>
-        <img className={s.img} src={image} alt="imageTree" />
+        <img className={s.img} src={Tree} alt="imageTree" />
         <div>
           <p className={s.text__describe}>Radius</p>
           <p className={s.text}>{radius} m</p>
