@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import CardTree from "../../components/CardTree/CardTree";
 import Modal from "../../components/Modal/Modal";
 import { getAllUsers } from "../../redux/user/userOperations";
@@ -26,6 +29,17 @@ const TreesPage = () => {
 
   return (
     <>
+    <ToastContainer
+        position={toast.POSITION.TOP_CENTER} //"top-center"
+        autoClose={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        enableMultiContainer
+        containerId={"B"}
+      />
       <TreesList />
 
       {modal.open && (

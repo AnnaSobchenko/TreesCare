@@ -58,18 +58,7 @@ const TreeForm = ({ contact, closeModal }) => {
   ];
   const location = contact;
   return (
-    <div className={s.wrapper}>
-      <ToastContainer
-        position={toast.POSITION.TOP_CENTER} //"top-center"
-        autoClose={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        enableMultiContainer
-        containerId={"B"}
-      />
+    <div className={s.wrapper}>     
       <Formik
         initialValues={{
           radius: "",
