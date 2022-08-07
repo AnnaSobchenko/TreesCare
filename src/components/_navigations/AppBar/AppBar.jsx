@@ -133,7 +133,7 @@ const AppBar = () => {
 
           {isLoggedIn && (
             <NavLink
-              to="/login"
+              to="/trees"
               onClick={() => {
                 dispatch(logout());
               }}

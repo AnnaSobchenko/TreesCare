@@ -58,7 +58,7 @@ const TreeForm = ({ contact, closeModal }) => {
   ];
   const location = contact;
   return (
-    <div className={s.wrapper}>     
+    <div className={s.wrapper}>
       <Formik
         initialValues={{
           radius: "",
@@ -233,7 +233,10 @@ const TreeForm = ({ contact, closeModal }) => {
                 type="submit"
                 className={s.btn}
                 onClick={() => {
-                  toast.success("tree adds to list", { containerId: "B" });
+                  toast.success(
+                    "Thanks, the information has been sent to the administrator for approval",
+                    { containerId: "B" }
+                  );
                 }}
                 style={{
                   color: theme === "light" ? "black" : "white",
@@ -244,7 +247,6 @@ const TreeForm = ({ contact, closeModal }) => {
               <button
                 type="button"
                 onClick={() => {
-                  // toast.success("tree adds to list", { containerId: "B" });
                   closeModal(true);
                 }}
                 className={s.btn}
